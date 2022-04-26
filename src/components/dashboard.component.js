@@ -3,6 +3,8 @@ import StatusChart from "./charts/status-chart.component";
 import PriorityChart from "./charts/priority-chart.component";
 import TypeChart from "./charts/type-chart.component";
 import TicketList from "./ticket-list.component";
+import Description from './description.component';
+
 
 export default class Dashboard extends Component {
     render() {
@@ -22,7 +24,8 @@ export default class Dashboard extends Component {
                         <td><TypeChart /></td>
                     </tbody>
             </table> */}
-            <TicketList />
+            <Description/>
+            {/* <TicketList /> */}
             </div>
         );
     }
