@@ -61,16 +61,25 @@ export default class TicketList extends Component {
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
-                            <th>Project</th>
+                            {/* <th>Project</th> */}
                             <th>Assigned To</th>
-                            <th>Priority</th>
+                            {/* <th>Priority</th> */}
                             <th>Status</th>
-                            <th>Type</th>
-                            <th>Actions</th>
+                            {/* <th>Type</th> */}
+                            {/* <th>Actions</th> */}
+                            <th>Category</th>               {/* Added new*/}
+                            
                         </tr>
                         </thead>
                         <tbody>
-                            { this.getOpenList() }
+                            {/* { this.getOpenList() } */}
+                            <tr>
+                                <td>Internet not working</td>
+                                <td>Lan Issue</td>
+                                <td>Venkat</td>
+                                <td>Open</td>
+                                <td>Network Issue</td>
+                            </tr>
                         </tbody>
                     </table>
                 <br></br>
@@ -80,16 +89,24 @@ export default class TicketList extends Component {
                         <tr>
                             <th>Title</th>
                             <th>Description</th>
-                            <th>Project</th>
+                            {/* <th>Project</th> */}
                             <th>Assigned To</th>
-                            <th>Priority</th>
+                            {/* <th>Priority</th> */}
                             <th>Status</th>
-                            <th>Type</th>
-                            <th>Actions</th>
+                            {/* <th>Type</th> */}
+                            {/* <th>Actions</th> */}
+                            <th>Category</th>               {/* Added new*/}
                         </tr>
                         </thead>
                         <tbody>
-                            { this.getResolvedList() }
+                            {/* { this.getResolvedList() } */}
+                            <tr>
+                                <td>Internet not working</td>
+                                <td>Lan Issue</td>
+                                <td>Venkat</td>
+                                <td>Closed</td>
+                                <td>Network Issue</td>
+                            </tr>
                         </tbody>
                     </table>
 			</div>

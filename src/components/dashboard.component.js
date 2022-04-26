@@ -8,7 +8,7 @@ export default class Dashboard extends Component {
     render() {
         return(
             <div>
-            <table className="table table-bordered">
+            {/* <table className="table table-bordered">
                     <thead className="thead-light">
                     <tr>
                         <th><h3>Tickets by Status</h3></th>
@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
                         <td><PriorityChart /></td>
                         <td><TypeChart /></td>
                     </tbody>
-            </table>
+            </table> */}
             <TicketList />
             </div>
         );

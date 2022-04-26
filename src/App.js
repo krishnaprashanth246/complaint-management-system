@@ -22,6 +22,11 @@ import EditTicket from "./components/edit-ticket.component";
 import Login from "./components/login.component";
 import SelectRoles from "./components/select-roles.component";
 import TryAgain from "./components/try-again.component"
+import EndUserMain from './components/enduser-main.component';
+import EndUserOpenTickets from './components/enduser-open.component';
+import EndUserClosedTickets from './components/enduser-closed.component';
+import FAQ from './components/faq.component'
+
 
 export default function App() {
   return (
@@ -29,7 +34,7 @@ export default function App() {
         <Navbar />
 
         <div className="wrapper">
-            <Sidebar />
+            {/* <Sidebar /> */}
             <div id="content">
                 {/* <Route path="/" exact component={Dashboard} /> */}
             
@@ -38,11 +43,15 @@ export default function App() {
                   <Route path="/login" exact component={Login} />
                   <Route path="/home" component={Dashboard} />
                   
-                  <Route path="/tickets/create" component={CreateTicket} />
+                  <Route path="/enduser/tickets/create" exact component={CreateTicket} />
                   <Route path="/manage-users" component={ManageUsers} />
                   <Route path="/users/create" component={CreateUser} />
                   <Route path="/manage-projects" component={ManageProjects} />
                   <Route path="/edit/:id" component={EditTicket} />
+                  <Route path="/enduser" exact component={EndUserMain} />
+                  <Route path="/enduser/tickets/open" exact component={EndUserOpenTickets} />
+                  <Route path="/enduser/tickets/closed" exact component={EndUserClosedTickets} />
+                  <Route path="/faq" exact component={FAQ} />
                   <Route component={TryAgain} /> 
                 </Switch>
             </div>
