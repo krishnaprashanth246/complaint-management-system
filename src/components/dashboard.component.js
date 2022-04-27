@@ -4,12 +4,15 @@ import PriorityChart from "./charts/priority-chart.component";
 import TypeChart from "./charts/type-chart.component";
 import TicketList from "./ticket-list.component";
 import Description from './description.component';
-
+import Navbar from './navbar.component';
 
 export default class Dashboard extends Component {
     render() {
         return(
+            
             <div>
+            <Navbar />
+
             {/* <table className="table table-bordered">
                     <thead className="thead-light">
                     <tr>

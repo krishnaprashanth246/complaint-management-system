@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Login from './login.component';
 
 export default class Navbar extends Component {
     render() {
@@ -10,14 +11,7 @@ export default class Navbar extends Component {
                         <i class="fas fa-align-justify"></i>
 	                </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-		                <ul className="navbar-nav ml-auto">  
-		                	<li>        
-		                    	<Link to="/login" className="nav-link">Log In</Link>
-		                    </li>
-		                    <li>
-		                    	<Link to="/" className="nav-link">Sign Out</Link>
-		                    </li>
-		                </ul>
+		                <Login/>
 	                </div>
                 </div>
             </nav>

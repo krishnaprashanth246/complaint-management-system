@@ -8,7 +8,7 @@ import axios from 'axios';
 const clientID = '610437251477-3qnl60hikuaeq0blbmc2fh95i0k9ld38.apps.googleusercontent.com';
 
 
-export default function Login() {
+export default function Login({setLoginData}) {
     const [showloginButton, setShowloginButton] = useState(true);
     const [showlogoutButton, setShowlogoutButton] = useState(false);
 
@@ -30,6 +30,7 @@ export default function Login() {
         setShowloginButton(false);
         setShowlogoutButton(true);
         localStorage.setItem("loginData", JSON.stringify(res));
+        // setLoginData(JSON.stringify(res));
         console.log(localStorage.getItem("loginData"));
     };
     const onFailure = (res) => {
