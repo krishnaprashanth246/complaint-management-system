@@ -1,19 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose'
 
-// Create Schema
-const ticketSchema = new Schema({
-	title: { type: String, required: true },
-    description: { type: String, required: true },
-    projectName: { type: String, required: true },
-    assignee: { type: String, required: true},
-    priority: { type: String, required: true },
-    status: { type: String, required: true },
-    type: { type: String, required: true },
-}, {
-    timestamps: true,
-});
+const ticketSchema = mongoose.Schema({
+    ticketId: {type: Number, required: true, unique: true},
+    categoryId: {type: Number, required: true},
+    categoryName: {type: String, required:true},
+    endUser: {type: Number, required: true},
+    assignedTechnician: {type: Number},
+    openedDate: {type: Date, required: true},
+    lastUpdated: Date,
+    ticketStatus: String,
+    ticketInfo: String,
+})
 
-const Ticket = mongoose.model('Ticket', ticketSchema);
+const Ticket = mongoose.model('Ticket', ticketSchema)
 
-module.exports = Ticket;
+export default Ticket 
