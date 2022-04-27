@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import EndUserSidebar from './enduser-sidebar.component';
 
 class EndUserOpen extends Component{
     render()
     {
         return(
-            <h1>Your Open Tickets</h1>
-        );
+            <div className='wrapper'>
+                 <EndUserSidebar />
+                <div>
+                    <h1>Your Open Tickets</h1>
+                </div>
+            </div>
+        );      
     };
 
 }
