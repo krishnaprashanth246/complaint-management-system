@@ -25,6 +25,10 @@ import TryAgain from "./components/try-again.component"
 import EndUserMain from './components/enduser-main.component';
 import EndUserOpenTickets from './components/enduser-open.component';
 import EndUserClosedTickets from './components/enduser-closed.component';
+import TechnicianMain from './components/technician-main.component';
+import TechnicianOpenTickets from './components/technician-open.component';
+import TechnicianClosedTickets from './components/technician-closed.component';
+import TechnicianTransferRequests from './components/technician-transfer.component';
 import FAQ from './components/faq.component'
 
 
@@ -56,7 +60,12 @@ export default function App() {
                   <Route path="/enduser" exact component={EndUserMain} />
                   <Route path="/enduser/tickets/open" exact component={EndUserOpenTickets} />
                   <Route path="/enduser/tickets/closed" exact component={EndUserClosedTickets} />
-                  <Route path="/faq" exact component={FAQ} />
+                  <Route path="/technician" exact component={TechnicianMain} />
+                  <Route path="/technician/tickets/open" exact component={TechnicianOpenTickets} />
+                  <Route path="/technician/tickets/closed" exact component={TechnicianClosedTickets} />
+                  <Route path="/technician/tickets/transfer" exact component={TechnicianTransferRequests} />
+                  <Route path="/enduser/faq" exact component={FAQ} />
+                  <Route path="/technician/faq" exact component={FAQ} />
                   <Route component={TryAgain} /> 
                 </Switch>
             </div>
