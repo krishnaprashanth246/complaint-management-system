@@ -24,9 +24,10 @@ class Description extends Component{
     render()
     {
         const styles = {
-            border: '1px solid rgba(0, 0, 0, 0.05)', 
+            // border: '1px solid rgba(0, 0, 0, 0.05)', 
             textAlign: 'center',
        };
+
 
     
     
@@ -39,7 +40,7 @@ class Description extends Component{
                 <div className="d-flex flex-column rolealign">
                     <h3 className="p-2 col-example text-left">Have Complaints ? <Link to="/enduser/tickets/create"><Button variant="primary">Open New Ticket</Button></Link></h3>
                     <div className="p-2 col-example text-left">
-                        <h3>Want to View All Tickets ? <Button variant="primary" onClick={this._onButtonClick}>View Tickets</Button></h3>
+                        <h3 style={styles}>Want to View All Tickets ? <Button variant="primary" onClick={this._onButtonClick}>View Tickets</Button></h3>
                         {this.state.showTicketsComponent ?
                         <TicketList /> :
                         null
