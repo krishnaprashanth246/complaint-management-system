@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import EndUserSidebar from './enduser-sidebar.component';
 
 const priorities = ['Low', 'Medium', 'High'];
 const statuses = ['Open', 'In Progress', 'Resolved'];
@@ -136,6 +137,8 @@ export default class CreateTicket extends Component {
 
 	render() {
 		return(
+        <div className='wrapper'>
+            <EndUserSidebar/>
 			<div>
 				<h3>Submit a Ticket</h3>
 				<form onSubmit={this.onSubmit}>
@@ -236,6 +239,8 @@ export default class CreateTicket extends Component {
           </div>
 				</form>
 			</div>
+        </div>    
+        
 		);
 	}
 }
