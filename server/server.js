@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
 require('dotenv').config();
-
+const { OAuth2Client } = require('google-auth-library');
 const app = express();
 const port = process.env.PORT || 5000;
+const REACT_APP_GOOGLE_CLIENT_ID = '610437251477-3qnl60hikuaeq0blbmc2fh95i0k9ld38.apps.googleusercontent.com';
+
+const client = new OAuth2Client(REACT_APP_GOOGLE_CLIENT_ID);
 
 app.use(cors());
 app.use(express.json());
@@ -31,6 +33,25 @@ const projectsRouter = require('./routes/projects');
 app.use('/tickets', ticketsRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
+
+const users = [];
+
+function upsert(array, item) {
+  const i = array.findIndex((_item) => _item.email === item.email);
+  if (i > -1) array[i] = item;
+  else array.push(item);
+}
+app.post('/api/google-login', async (req, res) => {
+	const { token } = req.body;
+	const ticket = await client.verifyIdToken({
+	  idToken: token,
+	  audience: REACT_APP_GOOGLE_CLIENT_ID,
+	});
+	const { name, email, picture } = ticket.getPayload();
+	upsert(users, { name, email, picture });
+	res.status(201);
+	res.json({ name, email, picture });
+  });
 
 app.listen(port, () => {
 	console.log(`Server is running on port: ${port}`);

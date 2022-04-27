@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
 	  			<center><img src={logo} className="navbar-brand" width="120" alt="Tech support" /></center>
 	    		<ul class="nav flex-column">
 	    			<li className="nav-item">
-	    				<NavLink to="/" onlyActiveOnIndex={true} className="nav-link" activeClassName="active">
+	    				<NavLink to="/" className="nav-link" activeClassName="active">
 	    					<i class="fas fa-home"></i>
 	    					Dashboard Home
 	    				</NavLink>

@@ -29,6 +29,11 @@ import FAQ from './components/faq.component'
 
 
 export default function App() {
+  // const [loginData, setLoginData] = useState(
+  //   localStorage.getItem('loginData')
+  //     ? JSON.parse(localStorage.getItem('loginData'))
+  //     : null
+  // );
   return (
     <BrowserRouter>
         <Navbar />
@@ -39,7 +44,7 @@ export default function App() {
                 {/* <Route path="/" exact component={Dashboard} /> */}
             
                 <Switch>
-                  <Route path="/" exact component={SelectRoles} />
+                  <Route path="/" exact component={!localStorage.getItem('loginData')? SelectRoles : Login} />
                   <Route path="/login" exact component={Login} />
                   <Route path="/home" component={Dashboard} />
                   

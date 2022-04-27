@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose');
 
 const userRoleSchema = mongoose.Schema({
     id: {type: Number, required: true, unique: true},
@@ -7,4 +7,4 @@ const userRoleSchema = mongoose.Schema({
 
 const UserRole = mongoose.model('UserRole', userRoleSchema)
 
-export default UserRole
+module.exports= UserRole
