@@ -11,7 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to database via mongoose
-const uri = process.env.ATLAS_URI;
+const uri = process.env.MONGO_URI;
+//MONGO_URI = 'mongodb://localhost:27017'
 mongoose.connect(uri, { 
 	useNewUrlParser: true, 
 	useCreateIndex: true, 
