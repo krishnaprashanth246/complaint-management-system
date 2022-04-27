@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -33,14 +33,17 @@ import FAQ from './components/faq.component'
 
 
 export default function App() {
-  // const [loginData, setLoginData] = useState(
-  //   localStorage.getItem('loginData')
-  //     ? JSON.parse(localStorage.getItem('loginData'))
-  //     : null
-  // );
+  const [loginData, setLoginData] = useState(
+    localStorage.getItem('loginData')
+      ? JSON.parse(localStorage.getItem('loginData'))
+      : null
+  );
+
+  // const [isUserLoggedIn, setUserLogIn] = useState(true);
+
   return (
     <BrowserRouter>
-        <Navbar />
+        <Navbar setLoginData={setLoginData}/>
 
         <div className="wrapper">
             {/* <Sidebar /> */}
@@ -48,10 +51,8 @@ export default function App() {
                 {/* <Route path="/" exact component={Dashboard} /> */}
             
                 <Switch>
-                  <Route path="/" exact component={!localStorage.getItem('loginData')? SelectRoles : Login} />
-                  <Route path="/login" exact component={Login} />
+                  <Route path="/" exact component={!localStorage.getItem('loginData')? SelectRoles : Dashboard} />
                   <Route path="/home" component={Dashboard} />
-                  
                   <Route path="/enduser/tickets/create" exact component={CreateTicket} />
                   <Route path="/manage-users" component={ManageUsers} />
                   <Route path="/users/create" component={CreateUser} />
