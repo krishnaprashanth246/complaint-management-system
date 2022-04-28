@@ -29,6 +29,11 @@ import TechnicianMain from './components/technician-main.component';
 import TechnicianOpenTickets from './components/technician-open.component';
 import TechnicianClosedTickets from './components/technician-closed.component';
 import TechnicianTransferRequests from './components/technician-transfer.component';
+import AdminMain from './components/admin-main.component';
+import AdminAllTickets from './components/admin-all.component';
+import AdminOpenTickets from './components/admin-open.component';
+import AdminClosedTickets from './components/admin-closed.component';
+import AdminTransferRequests from './components/admin-transfer.component';
 import FAQ from './components/faq.component'
 
 
@@ -65,8 +70,14 @@ export default function App() {
                   <Route path="/technician/tickets/open" exact component={TechnicianOpenTickets} />
                   <Route path="/technician/tickets/closed" exact component={TechnicianClosedTickets} />
                   <Route path="/technician/tickets/transfer" exact component={TechnicianTransferRequests} />
+                  <Route path="/admin" exact component={AdminMain} />
+                  <Route path="/admin/tickets/all" exact component={AdminAllTickets} />
+                  <Route path="/admin/tickets/open" exact component={AdminOpenTickets} />
+                  <Route path="/admin/tickets/closed" exact component={AdminClosedTickets} />
+                  <Route path="/admin/tickets/transfer" exact component={AdminTransferRequests} />
                   <Route path="/enduser/faq" exact component={FAQ} />
                   <Route path="/technician/faq" exact component={FAQ} />
+                  <Route path="/admin/faq" exact component={FAQ} />
                   <Route component={TryAgain} /> 
                 </Switch>
             </div>
