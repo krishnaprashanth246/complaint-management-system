@@ -37,7 +37,7 @@ import AdminTransferRequests from './components/admin-transfer.component';
 import EndUserFAQComponent from './components/enduser-faq.component'
 import TechnicianFAQComponent from './components/technician-faq.component'
 import AdminFAQComponent from './components/admin-faq.component'
-
+import CreateCategory from './components/create-category.component';
 
 
 export default function App() {
@@ -82,6 +82,8 @@ export default function App() {
                   <Route path="/enduser/faq" exact component={EndUserFAQComponent} />
                   <Route path="/technician/faq" exact component={TechnicianFAQComponent} />
                   <Route path="/admin/faq" exact component={AdminFAQComponent} />
+                  <Route path="/category/create" exact component={CreateCategory} />
+
                   <Route component={TryAgain} /> 
                 </Switch>
             </div>

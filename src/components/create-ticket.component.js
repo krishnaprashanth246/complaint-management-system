@@ -3,122 +3,137 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import EndUserSidebar from './enduser-sidebar.component';
 
-const priorities = ['Low', 'Medium', 'High'];
-const statuses = ['Open', 'In Progress', 'Resolved'];
-const types = ['Bug/Error', 'Feature Request', 'Security', 'Other'];
+// const priorities = ['Low', 'Medium', 'High'];
+// const statuses = ['Open', 'In Progress', 'Resolved'];
+// const types = ['Bug/Error', 'Feature Request', 'Security', 'Other'];
 
 export default class CreateTicket extends Component {
 	constructor(props) {
         super(props);
 
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeProjectName = this.onChangeProjectName.bind(this);
-        this.onChangeAssignee = this.onChangeAssignee.bind(this);
-        this.onChangePriority = this.onChangePriority.bind(this);
-        this.onChangeStatus = this.onChangeStatus.bind(this);
-        this.onChangeType = this.onChangeType.bind(this);
+        this.onChangeCategoryID = this.onChangeCategoryID.bind(this);
+        this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
+        this.onChangeTicketInfo = this.onChangeTicketInfo.bind(this);
+        // this.onChangeAssignee = this.onChangeAssignee.bind(this);
+        // this.onChangePriority = this.onChangePriority.bind(this);
+        // this.onChangeStatus = this.onChangeStatus.bind(this);
+        // this.onChangeType = this.onChangeType.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = { 
-      		title: '',
-  		    description: '',
-  		    projectName: '',
-          assignee: '',
-  		    priority: '',
-  		    status: '',
-  		    type: '',
-          users: [],
-          projects: []
+      		// categoryId: '',
+  		    categoryName: '',
+  		    endUser: '',
+            // assignedTechnician: '',
+  		    openedDate: '',
+  		    // lastUpdated: '',
+  		    // ticketStatus: 'Open',
+            ticketInfo : '',
+            categories: [],
+            categoriesId : []
         };
     }
 
     componentDidMount() {
       // set default values for state properties
-      this.setState({
-        priority: priorities[0],
-        status: statuses[0],
-        type: types[0]
-      });
+    //   this.setState({
+    //     priority: priorities[0],
+    //     status: statuses[0],
+    //     type: types[0]
+    //   });
 
       // get list of users to set default assignee
-      axios.get('http://localhost:5000/users/')
-        .then(res => {
-            if(res.data.length > 0) {
-                this.setState({
-                    users: res.data.map(user => user.name),
-                    assignee: res.data[0].name
-                })
-            }
-        })
-        .catch((error) => { console.log(error); })
+    //   axios.get('http://localhost:5000/users/')
+    //     .then(res => {
+    //         if(res.data.length > 0) {
+    //             this.setState({
+    //                 users: res.data.map(user => user.name),
+    //                 assignee: res.data[0].name
+    //             })
+    //         }
+    //     })
+    //     .catch((error) => { console.log(error); })
 
         // get list of projects to set default project
-      axios.get('http://localhost:5000/projects/')
+      axios.get('http://localhost:5000/categories/')
         .then(res => {
             if(res.data.length > 0) {
                 this.setState({
-                    projects: res.data.map(project => project.name),
-                    projectName: res.data[0].name
+                    categories: res.data.map( category => category.categoryName),
+                    categoriesId: res.data.map( category => category._id),
+                    categoryName: res.data[0].categoryName
+                    // categoryID : res.data[0]._id
                 })
             }
         })
         .catch((error) => { console.log(error); })
     }
 
-    onChangeTitle(e) {
+    onChangeCategoryName(e) {
         this.setState({
-            title: e.target.value
+            categoryName: e.target.value
+        })
+        // let i=0;
+        // for()
+
+    }
+
+    // onChangeCategoryID(e) {
+    //     this.setState({
+    //         categoryID: e.target.value
+    //     })
+    // }
+
+    onChangeTicketInfo(e) {
+        this.setState({
+            ticketInfo: e.target.value
         })
     }
 
-    onChangeDescription(e) {
-        this.setState({
-            description: e.target.value
-        })
-    }
+    // onChangeAssignee(e) {
+    //     this.setState({
+    //         assignee: e.target.value
+    //     })
+    // }
 
-    onChangeProjectName(e) {
-        this.setState({
-            projectName: e.target.value
-        })
-    }
+    // onChangePriority(e) {
+    //     this.setState({
+    //         priority: e.target.value
+    //     })
+    // }
 
-    onChangeAssignee(e) {
-        this.setState({
-            assignee: e.target.value
-        })
-    }
+    // onChangeStatus(e) {
+    //     this.setState({
+    //         status: e.target.value
+    //     })
+    // }
 
-    onChangePriority(e) {
-        this.setState({
-            priority: e.target.value
-        })
-    }
-
-    onChangeStatus(e) {
-        this.setState({
-            status: e.target.value
-        })
-    }
-
-    onChangeType(e) {
-        this.setState({
-            type: e.target.value
-        })
-    }
+    // onChangeType(e) {
+    //     this.setState({
+    //         type: e.target.value
+    //     })
+    // }
 
     onSubmit(e) {
         e.preventDefault();
-
+        // const currentDate = new Date(); 
         const ticket = {
-            title: this.state.title,
-            description: this.state.description,
-            projectName: this.state.projectName,
-            assignee: this.state.assignee,
-            priority: this.state.priority,
-            status: this.state.status,
-            type: this.state.type
+            // title: this.state.title,
+            // description: this.state.description,
+            // projectName: this.state.projectName,
+            // assignee: this.state.assignee,
+            // priority: this.state.priority,
+            // status: this.state.status,
+            // type: this.state.type
+
+            categoryId : this.state.categoriesId[this.state.categories.indexOf(this.state.categoryName)]._id,
+  		    categoryName: this.state.categoryName,
+  		    endUser: this.state.endUser,
+            // assignedTechnician: '',
+  		    openedDate: new Date(),
+  		    // lastUpdated: currentDate,
+  		    // ticketStatus: 'Opened',
+            ticketInfo : this.state.ticketInfo
         }
 
         axios.post('http://localhost:5000/tickets/create', ticket)
@@ -128,11 +143,17 @@ export default class CreateTicket extends Component {
 
         // clear form
         this.setState({ 
-          title: '',
-          description: '',
-          priority: '',
-          status: '',
-          type: ''
+        //   categoryId: '',
+          categoryName: '',
+          endUser: '',
+          assignedTechnician: '',
+          openedDate: '',
+          lastUpdated:'',
+          ticketStatus: '',
+          ticketInfo: '',
+          categories: [],
+          categoriesId: []
+
         });
     }
 
@@ -150,40 +171,40 @@ export default class CreateTicket extends Component {
 			<div>
 				<h3>Submit a Ticket</h3>
 				<form onSubmit={this.onSubmit}>
-					<div className="form-group">
+					{/* <div className="form-group">
 						<label>Title: </label>
             	<input type="text"
                   className="form-control"
                   value={this.state.title}
                   onChange={this.onChangeTitle}
             	/>
-					</div>
+					</div> */}
 					<div className="form-group">
-						<label>Description: </label>
+						<label>Ticket Info: </label>
             	<textarea style={{resize: 'none'}}
                   type="text"
                   maxLength="250"
                   rows="3"
                   className="form-control"
-                  value={this.state.description}
-                  onChange={this.onChangeDescription}
+                  value={this.state.ticketInfo}
+                  onChange={this.onChangeTicketInfo}
             	></textarea>
 					</div>
 					<div className="form-group">
-						<label>Project Name: </label>
+						<label>Category Name: </label>
             	<select className="form-control"
-                      value={this.state.projectName}
-                      onChange={this.onChangeProjectName}>
+                      value={this.state.categoryName}
+                      onChange={this.onChangeCategoryName}>
                       {
-                          this.state.projects.map((project) => {
-                          return <option key={project}
-                                         value={project}>{project}
+                          this.state.categories.map((category) => {
+                          return <option key={category}
+                                         value={category}>{category}
                                  </option>;
                           })
                       }
               </select>
 					</div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label>Assigned To: </label>
               <select className="form-control"
                       value={this.state.assignee}
@@ -196,8 +217,8 @@ export default class CreateTicket extends Component {
                         })
                       }
               </select>
-          </div>
-					<div className="form-group">
+          </div> */}
+					{/* <div className="form-group">
 						<label>Priority: </label>
             	<select className="form-control"
                       value={this.state.priority}
@@ -210,8 +231,8 @@ export default class CreateTicket extends Component {
                           })
                       }
               </select>
-					</div>
-					<div className="form-group">
+					</div> */}
+					{/* <div className="form-group">
 						<label>Status: </label>
             	<select className="form-control"
                       value={this.state.status}
@@ -224,8 +245,8 @@ export default class CreateTicket extends Component {
                           })
                       }
               </select>
-					</div>
-					<div className="form-group">
+					</div> */}
+					{/* <div className="form-group">
 						<label>Type: </label>
             	<select className="form-control"
                       value={this.state.type}
@@ -238,7 +259,7 @@ export default class CreateTicket extends Component {
                           })
                       }
               </select>
-					</div>
+					</div> */}
 					<div className="form-group">
               <input type="submit"
                    value="Submit Ticket"

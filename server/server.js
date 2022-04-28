@@ -31,12 +31,14 @@ const usersRouter = require('./routes/users');
 const projectsRouter = require('./routes/projects');
 const faqRouter = require('./routes/faq');
 const feedbackRouter = require('./routes/feedback');
+const categoryRouter = require('./routes/categories');
 
 app.use('/tickets', ticketsRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/faq',faqRouter);
 app.use('./feeback',feedbackRouter);
+app.use('./categories', categoryRouter);
 
 const users = [];
 
