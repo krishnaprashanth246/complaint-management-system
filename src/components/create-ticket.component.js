@@ -11,7 +11,7 @@ export default class CreateTicket extends Component {
 	constructor(props) {
         super(props);
 
-        this.onChangeCategoryID = this.onChangeCategoryID.bind(this);
+        // this.onChangeCategoryID = this.onChangeCategoryID.bind(this);
         this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
         this.onChangeTicketInfo = this.onChangeTicketInfo.bind(this);
         // this.onChangeAssignee = this.onChangeAssignee.bind(this);

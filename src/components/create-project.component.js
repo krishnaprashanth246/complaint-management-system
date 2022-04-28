@@ -58,7 +58,7 @@ export default class CreateProject extends Component {
                         <label>Project: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.name}
+                               value={this.state.categoryName}
                                onChange={this.onChangeName}
                         />
                     </div>

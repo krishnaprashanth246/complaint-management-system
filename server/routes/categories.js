@@ -2,11 +2,11 @@ const router = require('express').Router();
 
 // Category Model
 const Category = require('../models/category.model');
-
+console.log('yoooo');
 // CREATE
 router.route('/create').post((req, res) => {
-    const name = req.body.name;
-
+    const categoryName = req.body.categoryName;
+    console.log('hiiii\n');
     const newCategory = new Category({
     	categoryName,
     });
