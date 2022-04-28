@@ -12,22 +12,25 @@ router.route('/').get((req, res) => {
 
 // CREATE
 router.route('/create').post((req, res) => { 
-	const title = req.body.title;
-    const description = req.body.description;
-    const projectName = req.body.projectName;
-    const assignee = req.body.assignee;
-    const priority = req.body.priority;
-    const status = req.body.status;
-    const type = req.body.type;
-
+	const categoryId = req.body.categoryId;
+    const categoryName = req.body.categoryName;
+    const endUser = req.body.endUser;
+    // const assignedTechnician = req.body.assignedTechnician;
+    const openedDate = req.body.openedDate;
+    const lastUpdated = openedDate;
+    const ticketStatus = "Open";
+    const ticketInfo = req.body.ticketInfo;
+    // We get tassigned technician through other modules
+    const assignedTechnician = null;
     const newTicket = new Ticket({
-    	title,
-    	description,
-    	projectName,
-        assignee,
-    	priority,
-    	status,
-    	type,
+    	categoryId: categoryId,
+        categoryName: categoryName,
+        endUser: endUser,
+        openedDate: openedDate,
+        lastUpdated: lastUpdated,
+        ticketStatus: ticketStatus,
+        ticketInfo: ticketInfo,
+        assignedTechnician: assignedTechnician
     });
 
     newTicket.save()
@@ -43,16 +46,20 @@ router.route('/:id').get((req,res) => {
 });
 
 // UPDATE
-router.route('/update/:id').post((req,res) => {
+router.route('/enduser/update/:id').post((req,res) => {
     Ticket.findById(req.params.id)
         .then(ticket => {
-	    	ticket.title = req.body.title;
-	    	ticket.description = req.body.description;
-	    	ticket.projectName = req.body.projectName;
-            ticket.assignee = req.body.assignee;
-	    	ticket.priority = req.body.priority;
-	    	ticket.status = req.body.status;
-	    	ticket.type = req.body.type;
+
+            ticket.categoryId = req.body.categoryId;
+            ticket.categoryName = req.body.categoryName;
+            ticket.endUser = req.body.endUser;
+            // const assignedTechnician = req.body.assignedTechnician;
+            // ticket.openedDate = req.body.openedDate;
+            ticket.lastUpdated = new Date();
+            // ticket.ticketStatus = req.body.ticketStatus;
+            ticket.ticketInfo = req.body.ticketInfo;
+            // We get tassigned technician through other modules
+            // ticket.assignedTechnician = null;
 
             ticket.save()
                 .then(() => res.json('Ticket updated'))
@@ -61,6 +68,49 @@ router.route('/update/:id').post((req,res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
+router.route('/technician/update/:id').post((req,res) => {
+    Ticket.findById(req.params.id)
+        .then(ticket => {
+
+            ticket.categoryId = req.body.categoryId;
+            ticket.categoryName = req.body.categoryName;
+            // ticket.endUser = req.body.endUser;
+            // const assignedTechnician = req.body.assignedTechnician;
+            // ticket.openedDate = req.body.openedDate;
+            ticket.lastUpdated = new Date();
+            ticket.ticketStatus = req.body.ticketStatus;
+            ticket.ticketInfo = req.body.ticketInfo;
+            // We get tassigned technician through other modules
+            // ticket.assignedTechnician = null;
+
+            ticket.save()
+                .then(() => res.json('Ticket updated'))
+                .catch(err => res.status(400).json('Error: ' + err));
+    	})
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/admin/update/:id').post((req,res) => {
+    Ticket.findById(req.params.id)
+        .then(ticket => {
+
+            ticket.categoryId = req.body.categoryId;
+            ticket.categoryName = req.body.categoryName;
+            ticket.endUser = req.body.endUser;
+            assignedTechnician = req.body.assignedTechnician;
+            // ticket.openedDate = req.body.openedDate;
+            ticket.lastUpdated = new Date();
+            ticket.ticketStatus = req.body.ticketStatus;
+            ticket.ticketInfo = req.body.ticketInfo;
+            // We get tassigned technician through other modules
+
+            ticket.save()
+                .then(() => res.json('Ticket updated'))
+                .catch(err => res.status(400).json('Error: ' + err));
+    	})
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 // DELETE
 router.route('/:id').delete((req,res) => {
     Ticket.findByIdAndDelete(req.params.id)
