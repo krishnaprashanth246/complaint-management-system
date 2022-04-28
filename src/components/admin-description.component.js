@@ -12,6 +12,13 @@ class AdminDescription extends Component{
           showTransferredTicketsComponent: false,
         };
         this._onButtonClick = this._onButtonClick.bind(this);
+        
+        if(localStorage.getItem("loginData") == null){
+          this.props.history.push("/selectrole");
+        }
+        if(localStorage.getItem("role") != "admin"){
+          this.props.history.push("/selectrole");
+        }
       }
     
       _onButtonClick() {
@@ -19,6 +26,7 @@ class AdminDescription extends Component{
           showTransferredTicketsComponent: true,
         });
       }
+
     
       
     render()

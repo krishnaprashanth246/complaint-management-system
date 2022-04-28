@@ -4,6 +4,16 @@ import { NavLink } from 'react-router-dom';
 import TechnicianSidebar from './technician-sidebar.component';
 
 class TechnicianOpenTickets extends Component{
+    constructor(props)
+    {
+        super(props);
+        if(localStorage.getItem("loginData") == null){
+            this.props.history.push("/selectrole");
+        }
+        if(localStorage.getItem("role") != "technician"){
+            this.props.history.push("/selectrole");
+        }
+    }
     render()
     {
         return(

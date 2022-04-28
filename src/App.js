@@ -34,7 +34,10 @@ import AdminAllTickets from './components/admin-all.component';
 import AdminOpenTickets from './components/admin-open.component';
 import AdminClosedTickets from './components/admin-closed.component';
 import AdminTransferRequests from './components/admin-transfer.component';
-import FAQ from './components/faq.component'
+import EndUserFAQComponent from './components/enduser-faq.component'
+import TechnicianFAQComponent from './components/technician-faq.component'
+import AdminFAQComponent from './components/admin-faq.component'
+
 
 
 export default function App() {
@@ -76,9 +79,9 @@ export default function App() {
                   <Route path="/admin/tickets/open" exact component={AdminOpenTickets} />
                   <Route path="/admin/tickets/closed" exact component={AdminClosedTickets} />
                   <Route path="/admin/tickets/transfer" exact component={AdminTransferRequests} />
-                  <Route path="/enduser/faq" exact component={()=><FAQ value="enduser"/>} />
-                  <Route path="/technician/faq" exact component={() => <FAQ value="technician"/>} />
-                  <Route path="/admin/faq" exact component={() => <FAQ value="admin"/>} />
+                  <Route path="/enduser/faq" exact component={EndUserFAQComponent} />
+                  <Route path="/technician/faq" exact component={TechnicianFAQComponent} />
+                  <Route path="/admin/faq" exact component={AdminFAQComponent} />
                   <Route component={TryAgain} /> 
                 </Switch>
             </div>

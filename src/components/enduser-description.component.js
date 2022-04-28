@@ -12,6 +12,12 @@ class Description extends Component{
           showTicketsComponent: false,
         };
         this._onButtonClick = this._onButtonClick.bind(this);
+        if(localStorage.getItem("loginData") == null){
+          this.props.history.push("/selectrole");
+        }
+        if(localStorage.getItem("role") != "enduser"){
+            this.props.history.push("/selectrole");
+        }
       }
     
       _onButtonClick() {
