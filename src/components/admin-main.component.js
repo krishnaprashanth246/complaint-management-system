@@ -6,7 +6,15 @@ import AdminDescription from "./admin-description.component";
 
 
 class AdminMain extends Component{
-
+    constructor(props){
+        super(props);
+        if(localStorage.getItem("loginData") == null){
+            this.props.history.push("/selectrole");
+        }
+        if(localStorage.getItem("role") != "admin"){
+            this.props.history.push("/selectrole");
+        }
+    }
     render(){
         return(
             <div className='wrapper'>

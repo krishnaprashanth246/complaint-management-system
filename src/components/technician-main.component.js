@@ -6,7 +6,15 @@ import TechnicianDescription from "./technician-description.component";
 
 
 class TechnicianMain extends Component{
-
+    constructor(props){
+        super(props);
+        if(localStorage.getItem("loginData") == null){
+            this.props.history.push("/selectrole");
+        }
+        if(localStorage.getItem("role") != "technician"){
+            this.props.history.push("/selectrole");
+        }
+    }
     render(){
         return(
             <div className='wrapper'>

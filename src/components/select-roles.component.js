@@ -12,7 +12,9 @@ export default class SelectRoles extends Component {
     }
 
     handleInput(e) {
+        // e.preventDefault();
         console.log(e.target.value);
+        localStorage.setItem("role", e.target.value);
     }
     
     render() {
@@ -42,9 +44,9 @@ export default class SelectRoles extends Component {
                <h1><center>Select a Role</center></h1>
            </Container>
             <div className="d-flex flex-column rolealign">
-                <div className="p-2 col-example text-left"><Link to='/enduser'><Button variant="primary" size="lg" value={'enduser'} onClick={e => this.handleInput(e, "value") }> End User</Button></Link></div>
-                <div className="p-2 col-example text-left"><Link to='/technician'><Button variant="primary" size="lg">Technician</Button></Link></div>
-                <div className="p-2 col-example text-left"><Link to='/admin'><Button variant="primary" size="lg">Admin</Button></Link></div>
+                <div className="p-2 col-example text-left"><Link to='/login'><Button variant="primary" size="lg" value={'enduser'} onClick={e => this.handleInput(e, "value") }> End User</Button></Link></div>
+                <div className="p-2 col-example text-left"><Link to='/login'><Button variant="primary" size="lg" value={'technician'} onClick={e => this.handleInput(e, "value") }>Technician</Button></Link></div>
+                <div className="p-2 col-example text-left"><Link to='/login'><Button variant="primary" size="lg" value={'admin'} onClick={e => this.handleInput(e, "value") }>Admin</Button></Link></div>
             </div>
             </div>
         );

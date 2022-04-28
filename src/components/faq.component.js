@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import AdminSidebar from './admin-sidebar.component';
 import EndUserSidebar from './enduser-sidebar.component';
 import TechnicianSidebar from './technician-sidebar.component';
 
@@ -15,7 +16,7 @@ class FAQComponent extends Component{
 
             <div className='wrapper'>
                 {this.props.value == "enduser"?
-                 <EndUserSidebar />: <TechnicianSidebar/>}
+                 <EndUserSidebar />: (this.props.value == "technician"?<TechnicianSidebar/> : <AdminSidebar/>)}
                 <div>
                     <ul>
 

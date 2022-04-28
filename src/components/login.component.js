@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useCallback} from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import axios from 'axios';
 //import { useNavigate } from "react-router-dom";
@@ -8,13 +8,17 @@ import axios from 'axios';
 const clientID = '610437251477-3qnl60hikuaeq0blbmc2fh95i0k9ld38.apps.googleusercontent.com';
 
 
-export default function Login({setLoginData}) {
+const Login = ({history}) => {
+    if(localStorage.getItem("role") == null){
+        history.push("/");
+    }
     const [showloginButton, setShowloginButton] = useState(true);
     const [showlogoutButton, setShowlogoutButton] = useState(false);
 
     const onSuccess = async (res) => {
+        // res.preventDefault();
         console.log('[Login Success] CurrentUser: ', res.profileObj);
-        // const gres = await axios.post('http://localhost:5000/api/google-login'+ JSON.stringify({
+        // const gres = await axios.post('http://localhost:5000/api/google-login',JSON.stringify({
         //     token: res.tokenId,
         //   }));
         //   {
@@ -32,7 +36,10 @@ export default function Login({setLoginData}) {
         localStorage.setItem("loginData", JSON.stringify(res));
         // setLoginData(JSON.stringify(res));
         console.log(localStorage.getItem("loginData"));
+        history.push("/"+localStorage.getItem("role"));
+
     };
+
     const onFailure = (res) => {
         console.log('[Login Failed] res:', res);
 
@@ -70,3 +77,5 @@ export default function Login({setLoginData}) {
         </div>
     );
 }
+
+export default withRouter(Login);

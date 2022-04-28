@@ -19,7 +19,7 @@ import CreateUser from "./components/create-user.component";
 import ManageUsers from "./components/manage-users.component";
 import ManageProjects from "./components/manage-projects.component";
 import EditTicket from "./components/edit-ticket.component";
-import Login from "./components/login.component";
+import Loginpage from "./components/login.component";
 import SelectRoles from "./components/select-roles.component";
 import TryAgain from "./components/try-again.component"
 import EndUserMain from './components/enduser-main.component';
@@ -48,7 +48,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-        <Navbar setLoginData={setLoginData}/>
+        {/* <Navbar setLoginData={setLoginData}/> */}
 
         <div className="wrapper">
             {/* <Sidebar /> */}
@@ -56,8 +56,9 @@ export default function App() {
                 {/* <Route path="/" exact component={Dashboard} /> */}
             
                 <Switch>
-                  <Route path="/" exact component={!localStorage.getItem('loginData')? SelectRoles : Dashboard} />
-                  <Route path="/home" component={Dashboard} />
+                  <Route path="/login" exact component={Loginpage} />
+                  <Route path="/" exact component={SelectRoles} />
+                  <Route path="/selectrole" exact component={SelectRoles} />
                   <Route path="/enduser/tickets/create" exact component={CreateTicket} />
                   <Route path="/manage-users" component={ManageUsers} />
                   <Route path="/users/create" component={CreateUser} />
@@ -75,9 +76,9 @@ export default function App() {
                   <Route path="/admin/tickets/open" exact component={AdminOpenTickets} />
                   <Route path="/admin/tickets/closed" exact component={AdminClosedTickets} />
                   <Route path="/admin/tickets/transfer" exact component={AdminTransferRequests} />
-                  <Route path="/enduser/faq" exact component={FAQ} />
-                  <Route path="/technician/faq" exact component={FAQ} />
-                  <Route path="/admin/faq" exact component={FAQ} />
+                  <Route path="/enduser/faq" exact component={()=><FAQ value="enduser"/>} />
+                  <Route path="/technician/faq" exact component={() => <FAQ value="technician"/>} />
+                  <Route path="/admin/faq" exact component={() => <FAQ value="admin"/>} />
                   <Route component={TryAgain} /> 
                 </Switch>
             </div>

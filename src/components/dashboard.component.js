@@ -11,7 +11,7 @@ export default class Dashboard extends Component {
         return(
             
             <div>
-            <Navbar />
+            {/* <Navbar /> */}
 
             {/* <table className="table table-bordered">
                     <thead className="thead-light">
