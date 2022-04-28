@@ -5,25 +5,20 @@ import EndUserSidebar from './enduser-sidebar.component';
 import Dashboard from "./dashboard.component";
 
 
-class EndUserMain extends Component{
-    constructor(props){
-        super(props);
+const EndUserMain = ({history}) => {
         if(localStorage.getItem("loginData") == null){
-            this.props.history.push("/selectrole");
+            history.push("/selectrole");
         }
         if(localStorage.getItem("role") != "enduser"){
-            this.props.history.push("/selectrole");
+            history.push("/selectrole");
         }
-    }
-    render(){
         return(
             <div className='wrapper'>
                 <EndUserSidebar />
                 <Dashboard/>
             </div>
         );
-    };
 };
 
 
-export default EndUserMain;
+export default withRouter(EndUserMain);
