@@ -29,10 +29,14 @@ mongoose.connection.once('open', () => {
 const ticketsRouter = require('./routes/tickets');
 const usersRouter = require('./routes/users');
 const projectsRouter = require('./routes/projects');
+const faqRouter = require('./routes/faq');
+const feedbackRouter = require('./routes/feedback');
 
 app.use('/tickets', ticketsRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
+app.use('/faq',faqRouter);
+app.use('./feeback',feedbackRouter);
 
 const users = [];
 
