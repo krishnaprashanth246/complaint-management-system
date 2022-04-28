@@ -70,7 +70,7 @@ const AdminSidebar = ({ history }) => {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="#" className="nav-link" activeClassName="active">
+					<NavLink to="/admin/logout" className="nav-link" activeClassName="active" onClick={e => handleLogout(e)}>
 
 						<GoogleLogout
 							clientId={clientID}
