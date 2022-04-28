@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import TransferredTicketList from './transferred-ticket-list.component';
@@ -13,12 +13,6 @@ class AdminDescription extends Component{
         };
         this._onButtonClick = this._onButtonClick.bind(this);
         
-        if(localStorage.getItem("loginData") == null){
-          this.props.history.push("/selectrole");
-        }
-        if(localStorage.getItem("role") != "admin"){
-          this.props.history.push("/selectrole");
-        }
       }
     
       _onButtonClick() {
@@ -38,6 +32,12 @@ class AdminDescription extends Component{
 
 
     
+       if(localStorage.getItem("loginData") == null){
+        return (<Redirect to="/selectrole"/>)
+      }
+      if(localStorage.getItem("role") != "admin"){
+        return (<Redirect to="/selectrole"/>)
+      }
     
         return(
             <div style={styles}>

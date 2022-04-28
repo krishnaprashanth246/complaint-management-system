@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , Redirect} from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import TechnicianSidebar from './technician-sidebar.component';
 
 class TechnicianTransferRequests extends Component{
-    constructor(props)
-    {
-        super(props);
-        if(localStorage.getItem("loginData") == null){
-            this.props.history.push("/selectrole");
-        }
-        if(localStorage.getItem("role") != "technician"){
-            this.props.history.push("/selectrole");
-        }
-    }
+
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "technician"){
+            return (<Redirect to="/selectrole"/>)
+        }
+
         return(
             <div className='wrapper'>
                  <TechnicianSidebar />

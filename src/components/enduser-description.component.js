@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import TicketList from './ticket-list.component';
@@ -12,12 +12,6 @@ class Description extends Component{
           showTicketsComponent: false,
         };
         this._onButtonClick = this._onButtonClick.bind(this);
-        if(localStorage.getItem("loginData") == null){
-          this.props.history.push("/selectrole");
-        }
-        if(localStorage.getItem("role") != "enduser"){
-            this.props.history.push("/selectrole");
-        }
       }
     
       _onButtonClick() {
@@ -35,11 +29,15 @@ class Description extends Component{
        };
 
 
-    
-    
+       if(localStorage.getItem("loginData") == null){
+        return (<Redirect to="/selectrole"/>)
+      }
+      if(localStorage.getItem("role") != "enduser"){
+        return (<Redirect to="/selectrole"/>)
+      }
         return(
             <div style={styles}>
-                <h2 >Welcome KP</h2>
+                <h2 >Welcome !</h2>
                 <p >The purpose of this platform is to provide support to the end users who are facing any IT related issues on IITH campus. End users can raise a ticket for their complaint and a technician will be assigned to solve the problem.
                 </p>
 

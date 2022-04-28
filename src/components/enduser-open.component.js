@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import EndUserSidebar from './enduser-sidebar.component';
 
 class EndUserOpen extends Component{
-    constructor(props)
-    {
-        super(props);
-        if(localStorage.getItem("loginData") == null){
-            this.props.history.push("/selectrole");
-        }
-        if(localStorage.getItem("role") != "enduser"){
-            this.props.history.push("/selectrole");
-        }
-    }
+    
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "enduser"){
+            return (<Redirect to="/selectrole"/>)
+        }
+
         return(
             <div className='wrapper'>
                  <EndUserSidebar />
