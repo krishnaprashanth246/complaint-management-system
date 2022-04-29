@@ -10,7 +10,7 @@ router.route('/create').post((req, res) => {
     const enduserRole = req.body.enduserRole || true;
     const technicianRole = req.body.technicianRole || false;
     const adminRole = req.body.adminRole || false;
-    const phoneNumber = req.body.phoneNumber || null;
+    // const phoneNumber = req.body.phoneNumber || null;
     const resetToken = req.body.resetToken || null;
     const expireToken = req.body.expireToken || null;
 
