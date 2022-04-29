@@ -4,6 +4,7 @@ const router = require('express').Router();
 const Ticket = require('../models/ticket.model');
 const User = require('../models/user.model');
 
+
 // index (get all tickets)
 router.route('/').get((req, res) => {
 
