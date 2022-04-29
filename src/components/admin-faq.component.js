@@ -4,9 +4,36 @@ import { NavLink } from 'react-router-dom';
 import AdminSidebar from './admin-sidebar.component';
 import EndUserSidebar from './enduser-sidebar.component';
 import TechnicianSidebar from './technician-sidebar.component';
+import "bootstrap/dist/css/bootstrap.min.css";
+import * as mdb from 'mdb-ui-kit'; // lib
+import { Input } from 'mdb-ui-kit'; // module
+const axios = require('axios')
 
 
 class AdminFAQComponent extends Component{
+
+    constructor(props){
+        super(props);
+    
+        this.state = {
+            questions : [],
+            answers : [],
+        }
+
+    }
+    componentDidMount() {
+        axios.get('http://localhost:5000/faq').then(res => {
+            console.log(res.data);
+            if(res.data.length > 0) {
+                this.setState({
+                    questions: res.data.map(q => q.question),
+                    answers: res.data.map(a => a.answer)
+                })
+            }
+        })
+        .catch((error) => { console.log(error); })
+    }
+
 
     render()
     {
@@ -23,7 +50,7 @@ class AdminFAQComponent extends Component{
                 {/* {this.props.value == "enduser"?
                  <EndUserSidebar />: (this.props.value == "technician"?<TechnicianSidebar/> : <AdminSidebar/>)} */}
                  <AdminSidebar/>
-                <div>
+                <div className='container'>
                     <ul>
 
                     <li>
@@ -34,11 +61,8 @@ class AdminFAQComponent extends Component{
                         <h3>Safe App not working </h3>
                         <p>No solution available</p>
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-
                     </ul>
+                    
                 </div>
             </div>    
 

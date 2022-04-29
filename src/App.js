@@ -37,6 +37,7 @@ import AdminTransferRequests from './components/admin-transfer.component';
 import EndUserFAQComponent from './components/enduser-faq.component'
 import TechnicianFAQComponent from './components/technician-faq.component'
 import AdminFAQComponent from './components/admin-faq.component'
+import CreateFaq from './components/create-faq.component';
 import CreateCategory from './components/create-category.component';
 
 
@@ -82,6 +83,7 @@ export default function App() {
                   <Route path="/enduser/faq" exact component={EndUserFAQComponent} />
                   <Route path="/technician/faq" exact component={TechnicianFAQComponent} />
                   <Route path="/admin/faq" exact component={AdminFAQComponent} />
+                  <Route path="/faq/create" exact component={CreateFaq} />
                   <Route path="/category/create" exact component={CreateCategory} />
 
                   <Route component={TryAgain} /> 
