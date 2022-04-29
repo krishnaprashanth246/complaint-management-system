@@ -5,7 +5,7 @@ const ticketSchema = mongoose.Schema({
     categoryId: {type: String, required: true},
     categoryName: {type: String, required:true},
     endUser: {type: String, required: true},
-    assignedTechnician: {type: Number},
+    assignedTechnician: {type: String},
     openedDate: {type: Date, required: true, default: new Date()},
     lastUpdated: Date,
     ticketStatus: String,
