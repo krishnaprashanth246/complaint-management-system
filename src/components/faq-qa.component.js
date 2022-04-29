@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles.css'
 
 export default class QaComponent extends Component {
     constructor(props) {
@@ -6,10 +7,11 @@ export default class QaComponent extends Component {
     }
     render() {
         return (
-            <div>
+
+            <div className = "list_style">
                 <li>
-                    <h3>{this.props.question}</h3>
-                    <p>{this.props.answer}</p>
+                    <h3> Q : {this.props.question}</h3>
+                    <div className = "faq_design"> <p>{this.props.answer}</p> </div>
                 </li>
             </div>
         );
