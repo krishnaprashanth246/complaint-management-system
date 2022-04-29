@@ -22,15 +22,17 @@ import EditTicket from "./components/edit-ticket.component";
 import Loginpage from "./components/login.component";
 import SelectRoles from "./components/select-roles.component";
 import TryAgain from "./components/try-again.component"
-import Profilepage from "./components/profile.component";
 import EndUserMain from './components/enduser-main.component';
+import EndUserProfile from "./components/enduser-profile.component";
 import EndUserOpenTickets from './components/enduser-open.component';
 import EndUserClosedTickets from './components/enduser-closed.component';
 import TechnicianMain from './components/technician-main.component';
+import TechnicianProfile from "./components/technician-profile.component";
 import TechnicianOpenTickets from './components/technician-open.component';
 import TechnicianClosedTickets from './components/technician-closed.component';
 import TechnicianTransferRequests from './components/technician-transfer.component';
 import AdminMain from './components/admin-main.component';
+import AdminProfile from "./components/admin-profile.component";
 import AdminAllTickets from './components/admin-all.component';
 import AdminOpenTickets from './components/admin-open.component';
 import AdminClosedTickets from './components/admin-closed.component';
@@ -70,16 +72,16 @@ export default function App() {
                   <Route path="/manage-projects" component={ManageProjects} />
                   <Route path="/edit/:id" component={EditTicket} />
                   <Route path="/enduser" exact component={EndUserMain} />
-                  <Route path="/enduser/profile" exact component={Profilepage} />
+                  <Route path="/enduser/profile" exact component={EndUserProfile} />
                   <Route path="/enduser/tickets/open" exact component={EndUserOpenTickets} />
                   <Route path="/enduser/tickets/closed" exact component={EndUserClosedTickets} />
                   <Route path="/technician" exact component={TechnicianMain} />
-                  <Route path="/technician/profile" exact component={Profilepage} />
+                  <Route path="/technician/profile" exact component={TechnicianProfile} />
                   <Route path="/technician/tickets/open" exact component={TechnicianOpenTickets} />
                   <Route path="/technician/tickets/closed" exact component={TechnicianClosedTickets} />
                   <Route path="/technician/tickets/transfer" exact component={TechnicianTransferRequests} />
                   <Route path="/admin" exact component={AdminMain} />
-                  <Route path="/admin/profile" exact component={Profilepage} />
+                  <Route path="/admin/profile" exact component={AdminProfile} />
                   <Route path="/admin/tickets/all" exact component={AdminAllTickets} />
                   <Route path="/admin/tickets/open" exact component={AdminOpenTickets} />
                   <Route path="/admin/tickets/closed" exact component={AdminClosedTickets} />

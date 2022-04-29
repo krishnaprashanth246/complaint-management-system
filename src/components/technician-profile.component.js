@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import ProfileSidebar from './profile-sidebar.component';
+import  TechnicianSidebar from './technician-sidebar.component';
 import { withRouter } from "react-router-dom";
 
-class CreateTicket extends Component {
+class TechnicianProfile extends Component {
     render() {
-    
+      
+      if(localStorage.getItem("loginData") == null){
+        return (<Redirect to="/selectrole"/>)
+      }
+      if(localStorage.getItem("role") != "technician"){
+        return (<Redirect to="/selectrole"/>)
+      }
         return (
           <div className='wrapper'>
-            <ProfileSidebar />
+            <TechnicianSidebar />
             <div class="col-lg-8">
               <div class="card mb-4">
                 <div class="card-body">
@@ -53,4 +59,4 @@ class CreateTicket extends Component {
     }
 }
 
-export default withRouter(CreateTicket);
+export default withRouter(TechnicianProfile);
