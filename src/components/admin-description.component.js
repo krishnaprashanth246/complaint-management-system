@@ -41,7 +41,8 @@ class AdminDescription extends Component{
     
         return(
             <div style={styles}>
-                <h2 >Welcome Admin</h2>
+                {/* <h2 >Welcome Admin</h2> */}
+                <h2 >Welcome {JSON.parse(localStorage.getItem('loginData')).profileObj.name}!</h2>
                 <p >The purpose of this platform is to provide support to the end users who are facing any IT related issues on IITH campus. End users can raise a ticket for their complaint and a technician will be assigned to solve the problem.
                 </p>
 

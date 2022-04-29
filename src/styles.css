@@ -72,3 +72,23 @@ td {
   width: 100%;
   align-items: center;
 }
+
+.faq_design{
+  border : 3px solid rgb(27, 117, 227);
+  padding : 10px;
+  margin : 20px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  word-wrap: break-word;
+
+}
+
+.list_style{
+  list-style-type: none;
+}
+
+.faq_head{
+  color :rgb(227, 27, 74);
+  text-align: center;  
+  padding-bottom : 50px;
+}

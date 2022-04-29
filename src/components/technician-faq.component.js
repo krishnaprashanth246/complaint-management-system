@@ -6,6 +6,8 @@ import EndUserSidebar from './enduser-sidebar.component';
 import TechnicianSidebar from './technician-sidebar.component';
 import QaComponent from './faq-qa.component';
 import "bootstrap/dist/css/bootstrap.min.css";
+import '../styles.css'
+
 // import * as mdb from 'mdb-ui-kit'; // lib
 // import { Input } from 'mdb-ui-kit'; // module
 const axios = require('axios')
@@ -58,6 +60,7 @@ class TechnicianFAQComponent extends Component{
                  <EndUserSidebar />: (this.props.value == "technician"?<TechnicianSidebar/> : <AdminSidebar/>)} */}
                  <TechnicianSidebar/>
                  <div className='container'>
+                    <h1 className = "faq_head" > Frequently Asked Questions </h1>
                     <ul>
                     {this.getFaqList()} 
                     </ul>                   

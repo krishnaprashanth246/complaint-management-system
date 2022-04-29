@@ -40,7 +40,9 @@ class TechnicianDescription extends Component{
     
         return(
             <div style={styles}>
-                <h2 >Welcome KP</h2>
+                {/* <h2 >Welcome Technician</h2> */}
+                <h2 >Welcome {JSON.parse(localStorage.getItem('loginData')).profileObj.name}!</h2>
+                <p >The purpose of this platform is to provide support to the end users who are facing any IT related issues on IITH campus. End users can raise a ticket for their complaint and a technician will be assigned to solve the problem.</p>
 
                 <div className="d-flex flex-column rolealign">
                     <h3 className="p-2 col-example text-left">Want to View Open Tickets ? <Link to="/technician/tickets/open"><Button variant="primary">See Open Tickets</Button></Link></h3>
