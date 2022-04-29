@@ -2,20 +2,36 @@ const router = require('express').Router();
 
 // Project Model
 const Ticket = require('../models/ticket.model');
+const User = require('../models/user.model');
 
 // index (get all tickets)
 router.route('/').get((req, res) => {
-    const endUsermail = req.params.email;
-    User.find({email: endUsermail}).select('_id').then(endUserId => {
-        Ticket.find({
-            endUser: endUserId
-        })
+
+        Ticket.find()
             .then(tickets => res.json(tickets))
-            .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
+            .catch(err => res.status(400).json('Error: ' + err))
+        
+    // })
+    // .catch(err => res.status(400).json('Error: ' + err));
 	
 });
+
+router.route('/email/:email').get((req, res) => {
+    // console.log(JSON.stringify(req.params) );
+    // const endUsermail = req.params.email;
+    const endUseremail = req.params.email;
+    // User.find({email: endUsermail}).select('email').then(email => {
+        console.log(endUseremail);
+        Ticket.find({
+            endUser: endUseremail
+         }) .then(tickets => res.json(tickets))
+            .catch(err => res.status(400).json('Error: ' + err))
+        
+    // })
+    // .catch(err => res.status(400).json('Error: ' + err));
+	
+});
+
 
 // CREATE
 router.route('/create').post((req, res) => { 
@@ -47,7 +63,7 @@ router.route('/create').post((req, res) => {
 });
 
 // READ
-router.route('/:id').get((req,res) => {
+router.route('/id/:id').get((req,res) => {
     Ticket.findById(req.params.id)
         .then(ticket => res.json(ticket))
         .catch(err => res.status(400).json('Error: ' + err));

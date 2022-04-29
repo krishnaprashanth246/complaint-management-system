@@ -16,11 +16,13 @@ class EndUserOpen extends Component{
 	}
     
     componentDidMount() {
-        axios.get('http://localhost:5000/tickets/', 
-            {
-            params: {
-              email: JSON.parse(localStorage.getItem('loginData')).profileObj.email
-            }})
+        axios.get(`http://localhost:5000/tickets/email/${JSON.parse(localStorage.getItem('loginData')).profileObj.email}`
+            // , 
+            // {
+            // params: {
+            //   email: JSON.parse(localStorage.getItem('loginData')).profileObj.email
+            // }}
+            )
             .then(res => {
                 this.setState({ tickets: res.data })
             })
