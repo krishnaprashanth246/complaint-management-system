@@ -5,9 +5,16 @@ const Ticket = require('../models/ticket.model');
 
 // index (get all tickets)
 router.route('/').get((req, res) => {
-	Ticket.find()
-		.then(tickets => res.json(tickets))
-		.catch(err => res.status(400).json('Error: ' + err));
+    const endUsermail = req.params.email;
+    User.find({email: endUsermail}).select('_id').then(endUserId => {
+        Ticket.find({
+            endUser: endUserId
+        })
+            .then(tickets => res.json(tickets))
+            .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+	
 });
 
 // CREATE
