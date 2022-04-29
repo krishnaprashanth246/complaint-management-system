@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
+import AdminSidebar from './admin-sidebar.component';
 // import Category from '../../server/models/category.model';
 
 export default class CreateCategory extends Component {
@@ -53,6 +55,8 @@ export default class CreateCategory extends Component {
 
     render() {
         return (
+        <div className='wrapper'>
+            <AdminSidebar/>
             <div>
                 <h3>Create New Category</h3>
                 <form onSubmit={this.onSubmit}>
@@ -72,6 +76,7 @@ export default class CreateCategory extends Component {
                     </div>
                 </form>
             </div>
+        </div>
         );
     }
 
