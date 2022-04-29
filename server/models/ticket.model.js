@@ -10,6 +10,7 @@ const ticketSchema = mongoose.Schema({
     lastUpdated: Date,
     ticketStatus: String,
     ticketInfo: String,
+    feedback: String
 });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);

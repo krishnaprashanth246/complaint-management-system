@@ -10,7 +10,7 @@ export default class CreateCategory extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     
         this.state = {
-            categories : [],
+            // categories : [],
             categoryName : ''
         }
 
