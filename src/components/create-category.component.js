@@ -10,7 +10,7 @@ export default class CreateCategory extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     
         this.state = {
-            categories : [],
+            // categories : [],
             categoryName : ''
         }
 
@@ -18,15 +18,15 @@ export default class CreateCategory extends Component {
 
     componentDidMount() {
         // get list of projects to set default project
-        axios.get('http://localhost:5000/categories/')
-            .then(res => {
-                if(res.data.length > 0) {
-                    this.setState({
-                        categories: res.data.map(category => category.categoryName)
-                    })
-                }
-            })
-            .catch((error) => { console.log(error); })
+        // axios.get('http://localhost:5000/categories/')
+        //     .then(res => {
+        //         if(res.data.length > 0) {
+        //             this.setState({
+        //                 categories: res.data.map(category => category.categoryName)
+        //             })
+        //         }
+        //     })
+        //     .catch((error) => { console.log(error); })
     }
 
     onChangeName(e) {

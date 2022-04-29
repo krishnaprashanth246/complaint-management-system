@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import EndUserSidebar from './enduser-sidebar.component';
+import { withRouter } from "react-router-dom";
 
 // const priorities = ['Low', 'Medium', 'High'];
 // const statuses = ['Open', 'In Progress', 'Resolved'];
 // const types = ['Bug/Error', 'Feature Request', 'Security', 'Other'];
 
-export default class CreateTicket extends Component {
+class CreateTicket extends Component {
 	constructor(props) {
         super(props);
 
@@ -139,22 +140,26 @@ export default class CreateTicket extends Component {
         axios.post('http://localhost:5000/tickets/create', ticket)
             .then(res => console.log(res.data))
 
-        alert('Successfully created.');
+        // alert('Successfully created.');
 
         // clear form
         this.setState({ 
         //   categoryId: '',
           categoryName: '',
           endUser: '',
-          assignedTechnician: '',
-          openedDate: '',
-          lastUpdated:'',
-          ticketStatus: '',
+        //   assignedTechnician: '',
+        //   openedDate: '',
+        //   lastUpdated:'',
+        //   ticketStatus: '',
           ticketInfo: '',
           categories: [],
           categoriesId: []
 
         });
+        // const navigate = useNavigate()
+        this.props.history.push("/enduser/tickets/open");
+
+
     }
 
 	render() {
@@ -273,3 +278,5 @@ export default class CreateTicket extends Component {
 		);
 	}
 }
+
+export default withRouter(CreateTicket);
