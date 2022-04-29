@@ -42,17 +42,22 @@ class AdminDescription extends Component{
         return(
             <div style={styles}>
                 <h2 >Welcome Admin</h2>
+                <p >The purpose of this platform is to provide support to the end users who are facing any IT related issues on IITH campus. End users can raise a ticket for their complaint and a technician will be assigned to solve the problem.
+                </p>
+
 
                 <div className="d-flex flex-column rolealign">
                     <h3 className="p-2 col-example text-left">Want to View Open Tickets ? <Link to="/admin/tickets/open"><Button variant="primary">See Open Tickets</Button></Link></h3>
-                    <h3 className="p-2 col-example text-left">Want to View Past Tickets ? <Link to="/admin/tickets/closed"><Button variant="primary">See Past Tickets</Button></Link></h3>
-                    <div className="p-2 col-example text-left">
+                    <h3 className="p-2 col-example text-left">Want to View Closed Tickets ? <Link to="/admin/tickets/closed"><Button variant="primary">See Closed Tickets</Button></Link></h3>
+                    {/* <div className="p-2 col-example text-left">
                         <h3 style={styles}>Want to View Transferred Tickets ? <Button variant="primary" onClick={this._onButtonClick}>See Transferred Tickets</Button></h3>
                         {this.state.showTransferredTicketsComponent ?
                         <TransferredTicketList /> :
                         null
                         }
-                    </div>
+                    </div> */}
+                    <h3 className="p-2 col-example text-left">Want to View Transferred Tickets ? <Link to="/admin/tickets/transfer"><Button variant="primary">See Transferred Tickets</Button></Link></h3>
+
                 </div>
 
             </div>

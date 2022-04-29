@@ -16,7 +16,7 @@ class AdminAllTickets extends Component{
 	}
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/tickets/${JSON.parse(localStorage.getItem('loginData')).profileObj.email}`
+        axios.get(`http://localhost:5000/tickets`
             // , 
             // {
             // params: {
