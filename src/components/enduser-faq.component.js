@@ -4,9 +4,32 @@ import { NavLink } from 'react-router-dom';
 import AdminSidebar from './admin-sidebar.component';
 import EndUserSidebar from './enduser-sidebar.component';
 import TechnicianSidebar from './technician-sidebar.component';
+const axios = require('axios')
 
 
 class EndUserFAQComponent extends Component{
+
+    constructor(props){
+        super(props);
+    
+        this.state = {
+            questions : [],
+            answers : [],
+        }
+
+    }
+    componentDidMount() {
+        axios.get('http://localhost:5000/faq').then(res => {
+            console.log(res.data);
+            if(res.data.length > 0) {
+                this.setState({
+                    questions: res.data.map(q => q.question),
+                    answers: res.data.map(a => a.answer)
+                })
+            }
+        })
+        .catch((error) => { console.log(error); })
+    }
 
     render()
     {

@@ -70,6 +70,13 @@ const AdminSidebar = ({ history }) => {
 					</NavLink>
 				</li>
 				<li>
+					<NavLink to="/faq/create" className="nav-link" activeClassName="active">
+						<i class="fas fa-question"></i>
+						{/* <i class="fa-solid fa-question"></i> */}
+						Create FAQ
+					</NavLink>
+				</li>
+				<li>
 					<NavLink to="/category/create" className="nav-link" activeClassName="active">
 						<i class="fas fa-question"></i>
 						{/* <i class="fa-solid fa-question"></i> */}
