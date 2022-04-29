@@ -115,32 +115,32 @@ class CreateTicket extends Component {
   //     })
   // }
 
-  onSubmit(e) {
-    e.preventDefault();
-    // const currentDate = new Date(); 
-    const ticket = {
-      // title: this.state.title,
-      // description: this.state.description,
-      // projectName: this.state.projectName,
-      // assignee: this.state.assignee,
-      // priority: this.state.priority,
-      // status: this.state.status,
-      // type: this.state.type
+    onSubmit(e) {
+        e.preventDefault();
+        // const currentDate = new Date().toString(); 
+        // const newDateFormat = `${currentDate.getDay().toString()}-${(currentDate.getMonth()).toString()}-${currentDate.getFullYear().toString()}`;
+        // console.log(newDateFormat);
+        const ticket = {
+            // title: this.state.title,
+            // description: this.state.description,
+            // projectName: this.state.projectName,
+            // assignee: this.state.assignee,
+            // priority: this.state.priority,
+            // status: this.state.status,
+            // type: this.state.type
 
-      categoryId: this.state.categoriesId[this.state.categories.indexOf(this.state.categoryName)],
-      categoryName: this.state.categoryName,
-      endUser: this.state.endUser,
-      // assignedTechnician: '',
-      openedDate: new Date(),
-      // lastUpdated: currentDate,
-      // ticketStatus: 'Opened',
-      ticketInfo: this.state.ticketInfo
-    }
-    console.log(ticket)
-    axios.post('http://localhost:5000/tickets/create', ticket)
-      .then(res => console.log(res.data))
-
-    // alert('Successfully created.');
+            categoryId : this.state.categoriesId[this.state.categories.indexOf(this.state.categoryName)],
+  		    categoryName: this.state.categoryName,
+  		    endUser: this.state.endUser,
+            // assignedTechnician: '',
+  		    openedDate: new Date(),
+  		    // lastUpdated: currentDate,
+  		    // ticketStatus: 'Opened',
+            ticketInfo : this.state.ticketInfo
+        }
+        // console.log(ticket)
+        axios.post('http://localhost:5000/tickets/create', ticket)
+            .then(res => console.log(res.data))
 
     // clear form
     this.setState({
