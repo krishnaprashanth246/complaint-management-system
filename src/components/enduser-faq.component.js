@@ -57,6 +57,7 @@ class EndUserFAQComponent extends Component{
                  <EndUserSidebar />: (this.props.value == "technician"?<TechnicianSidebar/> : <AdminSidebar/>)} */}
                  <EndUserSidebar/>
                  <div className='container'>
+                    <h1 className = "faq_head" > Frequently Asked Questions </h1>
                     <ul>
                     {this.getFaqList()} 
                     </ul>                   
