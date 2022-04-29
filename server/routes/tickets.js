@@ -1,8 +1,11 @@
 const router = require('express').Router();
 
+const res = require('express/lib/response');
 // Project Model
 const Ticket = require('../models/ticket.model');
 const User = require('../models/user.model');
+
+// Assign Technician function
 
 
 // index (get all tickets)
@@ -52,8 +55,32 @@ router.route('/technicianEmail/:email').get((req, res) => {
 	
 });
 
+const assignTechnician = (technicians, tickets) => {
+    let technicianidx = {};
+    technicians.forEach(element => {
+        technicianidx[(element.email)] = 0;
+    });
+    tickets.forEach(ticket => {
+        if(ticket.assignTechnician)
+            technicianidx[(ticket.assignTechnician)] += 1;
+    });
+    let keys = Object.keys(technicianidx);
+    let min = technicianidx[keys[0]];
+    let minkey = keys[0];
+    let i;
+
+    for (i = 1; i < keys.length; i++) {
+        let val = technicianidx[keys[i]];
+        if (val < min) {
+            min = val;
+            minkey = keys[i];
+        }
+    }
+    return minkey;
+}
+
 // CREATE
-router.route('/create').post((req, res) => { 
+router.route('/create').post(async (req, res) => { 
 	const categoryId = req.body.categoryId;
     const categoryName = req.body.categoryName;
     const endUser = req.body.endUser;
@@ -63,8 +90,49 @@ router.route('/create').post((req, res) => {
     const lastUpdated = openedDate;
     const ticketStatus = "Open";
     const ticketInfo = req.body.ticketInfo;
+    // var assignedTechnician = null;
+    console.log('hello');
+
+    const dummy = (data)=>{
+        var technicianArray = [];
+        data.forEach(element => {
+            // technicianMap[element.email]+=1;
+            technicianArray.push(element.email);
+        });
+        console.log(technicianArray)
+        // assignedTechnician = technicianArray[0];
+        // for(var i=0;i<data.lenth;i++)
+        // {
+        //     var obj = data[i];
+        //     console.log(obj.categoryName);
+        // }
+
+    }
+    // const tech = User.find(
+    //     {technicianRole : true}
+    // )
+    // .then(user => dummy(user))
+    // .catch(err => res.status(400).json('Error: ' + err))
+    // console.log(technicianArray[0]);
+    // console.log(tech)
+    // var technicianAll = assignedTechnician(technicianMap);
+    // console.log('His' + technicianArray);
+    // var arr = technicianArray;
+
+    // const map = arr.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+
+    // console.info([...map.keys()]) // to get unique elements
+    // console.info([...map.values()]) // to get the occurrences
+    // console.info([...map.entries()]) // to get the pairs [element, frequency]
+
     // We get tassigned technician through other modules
-    const assignedTechnician = null;
+    let assignedTechnician = null;
+    let technicians = await User.find({technicianRole: true});
+    let tickets = await Ticket.find();
+    // console.log(technicians);
+    // console.log(tickets);
+    assignedTechnician = assignTechnician(technicians,tickets);
+    console.log(assignedTechnician);
     const newTicket = new Ticket({
     	categoryId: categoryId,
         categoryName: categoryName,
@@ -73,7 +141,7 @@ router.route('/create').post((req, res) => {
         lastUpdated: lastUpdated,
         ticketStatus: ticketStatus,
         ticketInfo: ticketInfo,
-        assignedTechnician: assignedTechnician,
+        assignedTechnician: assignedTechnician.split('@')[0],
         feedback: ''
     });
 
