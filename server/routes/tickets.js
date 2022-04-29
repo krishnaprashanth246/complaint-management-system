@@ -20,6 +20,8 @@ router.route('/').get((req, res) => {
 	
 });
 
+
+// User fetch
 router.route('/email/:email').get((req, res) => {
     // console.log(JSON.stringify(req.params) );
     // const endUsermail = req.params.email;
@@ -36,6 +38,22 @@ router.route('/email/:email').get((req, res) => {
 	
 });
 
+// Technician fetch
+router.route('/technicianEmail/:email').get((req, res) => {
+    // console.log(JSON.stringify(req.params) );
+    // const endUsermail = req.params.email;
+    const technicianEmail = req.params.email;
+    // User.find({email: endUsermail}).select('email').then(email => {
+        // console.log(endUseremail);
+        Ticket.find({
+            assignedTechnician: technicianEmail
+         }) .then(tickets => res.json(tickets))
+            .catch(err => res.status(400).json('Error: ' + err))
+        
+    // })
+    // .catch(err => res.status(400).json('Error: ' + err));
+	
+});
 
 // CREATE
 router.route('/create').post((req, res) => { 
