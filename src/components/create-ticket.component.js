@@ -157,7 +157,7 @@ class CreateTicket extends Component {
 
     });
     // const navigate = useNavigate()
-    this.props.history.push("/enduser/tickets/open");
+    this.props.history.push("/enduser");
 
 
   }

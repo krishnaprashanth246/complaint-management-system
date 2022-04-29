@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import AdminSidebar from './admin-sidebar.component';
 // import Category from '../../server/models/category.model';
 
-export default class CreateCategory extends Component {
+ class CreateCategory extends Component {
 
     constructor(props){
         super(props);
@@ -51,6 +51,7 @@ export default class CreateCategory extends Component {
 
         // clear form
         this.setState({ categoryName: ''});
+        this.props.history.push("/admin");
     }
 
     render() {
@@ -81,3 +82,4 @@ export default class CreateCategory extends Component {
     }
 
 }
+export default withRouter(CreateCategory);

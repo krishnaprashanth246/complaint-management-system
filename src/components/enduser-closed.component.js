@@ -32,7 +32,7 @@ class EndUserClosed extends Component{
     getClosedList() {
         return this.state.tickets.map(currentTicket => {
             if(currentTicket.ticketStatus === "Closed") 
-                return <EndUserTicketPrinter 
+                return <EndUserTicketPrinter arg="closed" 
             			ticket={currentTicket} 
                         key={currentTicket._id}
                         />;

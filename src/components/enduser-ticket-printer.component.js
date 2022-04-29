@@ -22,7 +22,7 @@ export default class EndUserTicketPrinter extends Component{
                 <td>{this.props.ticket.lastUpdated? this.props.ticket.lastUpdated.split('T')[0] : 'N/A'}</td>
                 <td>{this.props.ticket.ticketStatus}</td>
                 {/* { getPriorities(this.props.ticket.priority) } */}
-                {/* <td>{!this.props.ticket.feedback ?'Not Submitted':'Submitted'}</td> */}
+                {this.props.arg == "closed"?(<td>{this.props.ticket.feedback?"Submitted" : "Not Submitted" }</td>):null }
                 <td><Link to={`/enduser/tickets/${this.props.ticket._id}`} >View Ticket</Link></td>
                 {/* <td><Link to= {{
                     pathname: `/enduser/tickets/id`,
