@@ -15,9 +15,11 @@ const TechnicianSidebar = ({history}) => {
 	};
 	return(
 			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-	  			<center><img src={logo} className="navbar-brand" width="120" alt="Tech support" />
+	  			{/* <center><img src={logo} className="navbar-brand" width="120" alt="Tech support" /> */}
+	  			<center><img src={JSON.parse(localStorage.getItem("loginData")).profileObj.imageUrl} className="navbar-brand" width="110" alt="Profile Image" />
+				
                     <br></br>
-                    <Link to="/technician/profile/:userid">Your Profile</Link>  
+                    <Link to="/technician/profile">Your Profile</Link>  
                 </center>
 	    		<ul class="nav flex-column">
 	    			<li className="nav-item">
