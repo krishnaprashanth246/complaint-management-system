@@ -5,8 +5,8 @@ import AdminSidebar from './admin-sidebar.component';
 import EndUserSidebar from './enduser-sidebar.component';
 import TechnicianSidebar from './technician-sidebar.component';
 import "bootstrap/dist/css/bootstrap.min.css";
-import * as mdb from 'mdb-ui-kit'; // lib
-import { Input } from 'mdb-ui-kit'; // module
+// import * as mdb from 'mdb-ui-kit'; // lib
+// import { Input } from 'mdb-ui-kit'; // module
 const axios = require('axios')
 
 
