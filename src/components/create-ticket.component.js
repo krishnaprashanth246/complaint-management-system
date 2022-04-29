@@ -23,7 +23,7 @@ export default class CreateTicket extends Component {
         this.state = { 
       		// categoryId: '',
   		    categoryName: '',
-  		    endUser: '',
+  		    endUser: JSON.parse(localStorage.getItem("loginData")).profileObj.email ,
             // assignedTechnician: '',
   		    openedDate: '',
   		    // lastUpdated: '',
@@ -126,7 +126,7 @@ export default class CreateTicket extends Component {
             // status: this.state.status,
             // type: this.state.type
 
-            categoryId : this.state.categoriesId[this.state.categories.indexOf(this.state.categoryName)]._id,
+            categoryId : this.state.categoriesId[this.state.categories.indexOf(this.state.categoryName)],
   		    categoryName: this.state.categoryName,
   		    endUser: this.state.endUser,
             // assignedTechnician: '',
@@ -135,7 +135,7 @@ export default class CreateTicket extends Component {
   		    // ticketStatus: 'Opened',
             ticketInfo : this.state.ticketInfo
         }
-
+        console.log(ticket)
         axios.post('http://localhost:5000/tickets/create', ticket)
             .then(res => console.log(res.data))
 
