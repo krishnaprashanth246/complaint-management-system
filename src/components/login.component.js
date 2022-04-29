@@ -15,7 +15,7 @@ const Login = ({history}) => {
     const [showloginButton, setShowloginButton] = useState(true);
     const [showlogoutButton, setShowlogoutButton] = useState(false);
 
-    const onSuccess = async (res) => {
+    const onSuccess = useCallback(async (res) => {
         // res.preventDefault();
         console.log('[Login Success] CurrentUser: ', res.profileObj);
         // const gres = await axios.post('http://localhost:5000/api/google-login',JSON.stringify({
@@ -31,17 +31,38 @@ const Login = ({history}) => {
         //     },
         //   });
         // const data = await res.json();
-
-
+        axios.get('http://localhost:5000/users/email/'+res.profileObj.email).then((userdata) => {
+        if(localStorage.getItem("role") === "enduser"){
+            if(userdata.data == null){
+                //do post into userdb
+                axios.post('http://localhost:5000/users/create',{
+                    name: res.profileObj.name,
+                    email: res.profileObj.email,
+                }).then(e => console.log(e));
+            }
+        }
+        else{
+            if(userdata.data === null){
+                history.push("/selectrole");
+            }
+            else{
+                if(!(localStorage.getItem("role") === "technician" && userdata.data.technicianRole 
+                || localStorage.getItem("role") === "admin" && userdata.data.adminRole)){
+                    history.push("/selectrole");
+                    console.log("something else is wrong");
+                }
+            }
+        }});
+        // console.log(userdata);
         setShowloginButton(false);
         setShowlogoutButton(true);
         localStorage.setItem("loginData", JSON.stringify(res));
         // console.log('yoyoyoyoyo' + JSON.parse(localStorage.getItem("loginData")).profileObj.imageUrl);
         // setLoginData(JSON.stringify(res));
-        console.log(localStorage.getItem("loginData"));
+        // console.log(localStorage.getItem("loginData"));
         history.push("/"+localStorage.getItem("role"));
 
-    };
+    },[history]);
 
     const onFailure = (res) => {
         console.log('[Login Failed] res:', res);
