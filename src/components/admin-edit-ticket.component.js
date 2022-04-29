@@ -2,22 +2,27 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import EndUserSidebar from './enduser-sidebar.component';
+import AdminSidebar from './admin-sidebar.component';
 
-class EndUserEditTicket extends Component{
+// const ticketStatusList = ['Open', 'Closed'];
+class AdminEditTicket extends Component{
     constructor(props)
     {
         super(props);
         this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
         this.onChangeTicketInfo = this.onChangeTicketInfo.bind(this);
+        this.onChangeTicketStatus = this.onChangeTicketStatus.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
             categoryName: '',
-            endUser: JSON.parse(localStorage.getItem("loginData")).profileObj.email,
+            endUser: '',
             ticketInfo: '',
+            ticketStatus : '',
             categories: [],
-            categoriesId: []
+            categoriesId: [],
+            assignedTechnician: '',
+            ticketStatusList : ["Open", "Closed"]
           };
 
 
@@ -44,7 +49,9 @@ class EndUserEditTicket extends Component{
                     // categories: res.data.map(category => category.categoryName),
                     // categoriesId: res.data.map(category => category._id),
                     categoryName: res.data.categoryName,
-                    ticketInfo: res.data.ticketInfo
+                    ticketInfo: res.data.ticketInfo,
+                    ticketStatus: res.data.ticketStatus,
+                    assignedTechnician : res.data.assignedTechnician
                 })
             })
             .catch((error) => { console.log(error); })
@@ -60,6 +67,12 @@ class EndUserEditTicket extends Component{
         // for()
     
       }
+
+    onChangeTicketStatus(e){
+        this.setState({
+            ticketStatus: e.target.value
+        })
+    }
 
 
       onChangeTicketInfo(e) {
@@ -79,10 +92,12 @@ class EndUserEditTicket extends Component{
   		    // openedDate: new Date(),
   		    // lastUpdated: new Date(),
   		    // ticketStatus: 'Opened',
-            ticketInfo : this.state.ticketInfo
+            assignedTechnician : this.state.assignedTechnician,
+            ticketInfo : this.state.ticketInfo,
+            ticketStatus : this.state.ticketStatus
         }
 
-        axios.post(`http://localhost:5000/tickets/enduser/update/${this.props.match.params.id}`, ticket)
+        axios.post(`http://localhost:5000/tickets/admin/update/${this.props.match.params.id}`, ticket)
             .then(res => console.log(res.data));
 
             this.setState({
@@ -94,13 +109,15 @@ class EndUserEditTicket extends Component{
                 //   lastUpdated:'',
                 //   ticketStatus: '',
                 ticketInfo: '',
+                ticketStatus: '',
                 categories: [],
                 categoriesId: []
+                // ticketStatusList : ['Open', 'Closed']
           
               });
             
         console.log('Successfully updated.');
-        this.props.history.push("/enduser");
+        this.props.history.push("/admin");
 
     }
 
@@ -111,7 +128,7 @@ class EndUserEditTicket extends Component{
     {
         return(
             <div className='wrapper'>
-                <EndUserSidebar />
+                <AdminSidebar />
             <div>
                 <h3>Edit Ticket</h3>
                 {/* {this.props.location.state.param} */}
@@ -142,6 +159,22 @@ class EndUserEditTicket extends Component{
                         }
                     </select>
                     </div>
+                    
+                    <div className="form-group">
+                    <label>Ticket Status: </label>
+                    <select className="form-control"
+                        value={this.state.ticketStatus}
+                        onChange={this.onChangeTicketStatus}>
+                        {
+                            this.state.ticketStatusList.map((ticketstatus) => {
+                            return <option key={ticketstatus}
+                            value={ticketstatus}>{ticketstatus}
+                            </option>;
+                        })
+                        }
+                    </select>
+                    </div>
+
                     <div className="form-group">
                     <input type="submit"
                         value="Submit Ticket"
@@ -155,4 +188,4 @@ class EndUserEditTicket extends Component{
     }
 }
 
-export default withRouter(EndUserEditTicket);
+export default withRouter(AdminEditTicket);

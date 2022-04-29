@@ -23,7 +23,9 @@ export default class TechnicianTicketPrinter extends Component{
                 <td>{this.props.ticket.ticketStatus}</td>
                 {/* { getPriorities(this.props.ticket.priority) } */}
                 {/* <td>{!this.props.ticket.feedback ?'Not Submitted':'Submitted'}</td> */}
-                <td></td>
+                {/* <td></td> */}
+                <td><Link to={`/technician/tickets/${this.props.ticket._id}`} >View Ticket</Link></td>
+
                 {/* <td>
                     <Link to={"/edit/"+this.props.ticket._id} className="badge badge-info">Edit</Link>
                     <br></br>

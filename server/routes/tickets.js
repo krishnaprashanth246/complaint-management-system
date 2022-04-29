@@ -211,7 +211,7 @@ router.route('/admin/update/:id').post((req,res) => {
 
             ticket.categoryId = req.body.categoryId;
             ticket.categoryName = req.body.categoryName;
-            ticket.endUser = req.body.endUser;
+            // ticket.endUser = req.body.endUser;
             ticket.assignedTechnician = req.body.assignedTechnician;
             // ticket.openedDate = req.body.openedDate;
             ticket.lastUpdated = new Date();

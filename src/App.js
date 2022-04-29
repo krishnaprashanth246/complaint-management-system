@@ -44,6 +44,11 @@ import CreateFaq from './components/create-faq.component';
 import CreateCategory from './components/create-category.component';
 import EndUserSingleTicket from './components/enduser-single-ticket.component';
 import EndUserEditTicket from './components/enduser-edit-ticket.component';
+import TechnicianSingleTicket from './components/technician-single-ticket.component';
+import TechnicianEditTicket from "./components/technician-edit-ticket.component";
+import AdminSingleTicket from './components/admin-single-ticket.component';
+import AdminEditTicket from "./components/admin-edit-ticket.component";
+
 
 export default function App() {
   const [loginData, setLoginData] = useState(
@@ -94,6 +99,10 @@ export default function App() {
                   <Route path="/category/create" exact component={CreateCategory} />
                   <Route path="/enduser/tickets/:id" exact component={EndUserSingleTicket} />
                   <Route path="/enduser/tickets/edit/:id" exact component={EndUserEditTicket} />
+                  <Route path="/technician/tickets/:id" exact component={TechnicianSingleTicket} />
+                  <Route path="/technician/tickets/edit/:id" exact component={TechnicianEditTicket} />
+                  <Route path="/admin/tickets/:id" exact component={AdminSingleTicket} />
+                  <Route path="/admin/tickets/edit/:id" exact component={AdminEditTicket} />
 
                   <Route component={TryAgain} /> 
                 </Switch>
