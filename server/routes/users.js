@@ -21,7 +21,7 @@ router.route('/create').post((req, res) => {
     	enduserRole,
         technicianRole,
         adminRole,
-        phoneNumber,
+        // phoneNumber,
         resetToken,
         expireToken
     });

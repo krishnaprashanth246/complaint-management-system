@@ -15,9 +15,9 @@ export default class TechnicianTicketPrinter extends Component{
     render() {
         return (
             <tr>
-                <td>{this.props.ticket.ticketInfo.slice(0,10)}</td>
+                <td>{this.props.ticket.ticketInfo.slice(0,10)}...</td>
                 <td>{this.props.ticket.categoryName}</td>
-                <td>{this.props.ticket.endUser.split('@')[0]}</td>
+                <td>{this.props.ticket.endUser?this.props.ticket.endUser.split('@')[0]:null}</td>
                 <td>{this.props.ticket.openedDate}</td>
                 <td>{this.props.ticket.lastUpdated}</td>
                 <td>{this.props.ticket.ticketStatus}</td>

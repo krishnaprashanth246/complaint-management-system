@@ -61,8 +61,8 @@ const assignTechnician = (technicians, tickets) => {
         technicianidx[(element.email)] = 0;
     });
     tickets.forEach(ticket => {
-        if(ticket.assignTechnician)
-            technicianidx[(ticket.assignTechnician)] += 1;
+        if(ticket.assignedTechnician)
+            technicianidx[(ticket.assignedTechnician)] += 1;
     });
     let keys = Object.keys(technicianidx);
     let min = technicianidx[keys[0]];
@@ -76,6 +76,7 @@ const assignTechnician = (technicians, tickets) => {
             minkey = keys[i];
         }
     }
+    console.log(technicianidx);
     return minkey;
 }
 
@@ -141,7 +142,7 @@ router.route('/create').post(async (req, res) => {
         lastUpdated: lastUpdated,
         ticketStatus: ticketStatus,
         ticketInfo: ticketInfo,
-        assignedTechnician: assignedTechnician.split('@')[0],
+        assignedTechnician: assignedTechnician,
         feedback: ''
     });
 
