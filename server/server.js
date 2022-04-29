@@ -37,8 +37,8 @@ app.use('/tickets', ticketsRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/faq',faqRouter);
-app.use('./feeback',feedbackRouter);
-app.use('./categories', categoryRouter);
+app.use('/feeback',feedbackRouter);
+app.use('/categories', categoryRouter);
 
 const users = [];
 

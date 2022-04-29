@@ -60,7 +60,7 @@ export default class CreateCategory extends Component {
                         <label>Category: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.name}
+                               value={this.state.categoryName}
                                onChange={this.onChangeName}
                         />
                     </div>
