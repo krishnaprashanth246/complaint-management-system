@@ -33,8 +33,32 @@ router.route('/email/:email').get((req, res) => {
 });
 
 
+const assignTechnician = (technicians, tickets) => {
+    let technicianidx = {};
+    technicians.forEach(element => {
+        technicianidx[(element.email)] = 0;
+    });
+    tickets.forEach(ticket => {
+        if(ticket.assignTechnician)
+            technicianidx[(ticket.assignTechnician)] += 1;
+    });
+    let keys = Object.keys(technicianidx);
+    let min = technicianidx[keys[0]];
+    let minkey = keys[0];
+    let i;
+
+    for (i = 1; i < keys.length; i++) {
+        let val = technicianidx[keys[i]];
+        if (val < min) {
+            min = val;
+            minkey = keys[i];
+        }
+    }
+    return minkey;
+}
+
 // CREATE
-router.route('/create').post((req, res) => { 
+router.route('/create').post(async (req, res) => { 
 	const categoryId = req.body.categoryId;
     const categoryName = req.body.categoryName;
     const endUser = req.body.endUser;
@@ -45,7 +69,13 @@ router.route('/create').post((req, res) => {
     const ticketStatus = "Open";
     const ticketInfo = req.body.ticketInfo;
     // We get tassigned technician through other modules
-    const assignedTechnician = null;
+    let assignedTechnician = null;
+    let technicians = await User.find({technicianRole: true});
+    let tickets = await Ticket.find();
+    // console.log(technicians);
+    // console.log(tickets);
+    assignedTechnician = assignTechnician(technicians,tickets);
+    console.log(assignedTechnician);
     const newTicket = new Ticket({
     	categoryId: categoryId,
         categoryName: categoryName,
