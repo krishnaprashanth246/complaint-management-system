@@ -160,12 +160,13 @@ router.route('/id/:id').get((req,res) => {
 
 // UPDATE
 router.route('/enduser/update/:id').post((req,res) => {
+    console.log("Heyyeyeyey");
     Ticket.findById(req.params.id)
         .then(ticket => {
-
+            
             ticket.categoryId = req.body.categoryId;
             ticket.categoryName = req.body.categoryName;
-            ticket.endUser = req.body.endUser;
+            // ticket.endUser = req.body.endUser;
             // const assignedTechnician = req.body.assignedTechnician;
             // ticket.openedDate = req.body.openedDate;
             ticket.lastUpdated = new Date();

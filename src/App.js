@@ -42,7 +42,8 @@ import TechnicianFAQComponent from './components/technician-faq.component'
 import AdminFAQComponent from './components/admin-faq.component'
 import CreateFaq from './components/create-faq.component';
 import CreateCategory from './components/create-category.component';
-
+import EndUserSingleTicket from './components/enduser-single-ticket.component';
+import EndUserEditTicket from './components/enduser-edit-ticket.component';
 
 export default function App() {
   const [loginData, setLoginData] = useState(
@@ -91,6 +92,8 @@ export default function App() {
                   <Route path="/admin/faq" exact component={AdminFAQComponent} />
                   <Route path="/faq/create" exact component={CreateFaq} />
                   <Route path="/category/create" exact component={CreateCategory} />
+                  <Route path="/enduser/tickets/:id" exact component={EndUserSingleTicket} />
+                  <Route path="/enduser/tickets/edit/:id" exact component={EndUserEditTicket} />
 
                   <Route component={TryAgain} /> 
                 </Switch>

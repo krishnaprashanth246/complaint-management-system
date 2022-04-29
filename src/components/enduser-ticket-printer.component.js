@@ -18,15 +18,16 @@ export default class EndUserTicketPrinter extends Component{
                 <td>{this.props.ticket.ticketInfo.slice(0,10)}...</td>
                 <td>{this.props.ticket.categoryName}</td>
                 <td>{this.props.ticket.assignedTechnician?this.props.ticket.assignedTechnician.split('@')[0]:null}</td>
-                <td>{this.props.ticket.openedDate}</td>
-                <td>{this.props.ticket.lastUpdated}</td>
+                <td>{this.props.ticket.openedDate ? this.props.ticket.openedDate.split('T')[0] : 'N/A'}</td>
+                <td>{this.props.ticket.lastUpdated? this.props.ticket.lastUpdated.split('T')[0] : 'N/A'}</td>
                 <td>{this.props.ticket.ticketStatus}</td>
                 {/* { getPriorities(this.props.ticket.priority) } */}
                 {/* <td>{!this.props.ticket.feedback ?'Not Submitted':'Submitted'}</td> */}
-                <td><Link to= {{
-                    path: "/tickets/id",
+                <td><Link to={`/enduser/tickets/${this.props.ticket._id}`} >View Ticket</Link></td>
+                {/* <td><Link to= {{
+                    pathname: `/enduser/tickets/id`,
                     state: {param: this.props.ticket._id}                
-                }}>View Ticket</Link></td>
+                }}>View Ticket</Link></td> */}
                 {/* <td>
                     <Link to={"/edit/"+this.props.ticket._id} className="badge badge-info">Edit</Link>
                     <br></br>

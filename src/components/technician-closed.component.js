@@ -53,7 +53,7 @@ class TechnicianClosedTickets extends Component{
                  {!this.props.showSideBar?<TechnicianSidebar />:null}
             <div>
                 <br></br>
-				<h3>Open Tickets</h3>
+				<h3>Closed Tickets</h3>
                     <table className="table">
                         <thead className="thead-light">
                         <tr>
