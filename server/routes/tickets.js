@@ -30,7 +30,8 @@ router.route('/create').post((req, res) => {
         lastUpdated: lastUpdated,
         ticketStatus: ticketStatus,
         ticketInfo: ticketInfo,
-        assignedTechnician: assignedTechnician
+        assignedTechnician: assignedTechnician,
+        feedback: ''
     });
 
     newTicket.save()
