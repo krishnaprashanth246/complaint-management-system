@@ -31,9 +31,12 @@ const Login = ({history}) => {
         //     },
         //   });
         // const data = await res.json();
+
+
         setShowloginButton(false);
         setShowlogoutButton(true);
         localStorage.setItem("loginData", JSON.stringify(res));
+        // console.log('yoyoyoyoyo' + JSON.parse(localStorage.getItem("loginData")).profileObj.imageUrl);
         // setLoginData(JSON.stringify(res));
         console.log(localStorage.getItem("loginData"));
         history.push("/"+localStorage.getItem("role"));

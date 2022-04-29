@@ -14,7 +14,7 @@ const EndUserSidebar = ({history}) => {
 	};
 		return(
 			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-	  			<center><img src={JSON.parse(localStorage.getItem("loginData")).profileObj.imageUrl} className="navbar-brand" width="120" alt="Tech support" />
+	  			<center><img src={JSON.parse(localStorage.getItem("loginData")).profileObj.imageUrl} className="navbar-brand" width="110" alt="Profile Image" />
                     <br></br>
                     <Link to="/enduser/profile">Your Profile</Link>  
                 </center>
