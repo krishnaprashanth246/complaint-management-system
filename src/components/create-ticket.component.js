@@ -117,7 +117,9 @@ class CreateTicket extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        // const currentDate = new Date(); 
+        // const currentDate = new Date().toString(); 
+        // const newDateFormat = `${currentDate.getDay().toString()}-${(currentDate.getMonth()).toString()}-${currentDate.getFullYear().toString()}`;
+        // console.log(newDateFormat);
         const ticket = {
             // title: this.state.title,
             // description: this.state.description,
@@ -136,7 +138,7 @@ class CreateTicket extends Component {
   		    // ticketStatus: 'Opened',
             ticketInfo : this.state.ticketInfo
         }
-        console.log(ticket)
+        // console.log(ticket)
         axios.post('http://localhost:5000/tickets/create', ticket)
             .then(res => console.log(res.data))
 

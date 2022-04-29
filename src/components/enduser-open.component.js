@@ -64,7 +64,7 @@ class EndUserOpen extends Component{
                             <th>Opened Date</th>
                             <th>Last Updated</th>
                             <th>Status</th>
-                            <th>Feedback</th>
+                            {/* <th>Feedback</th> */}
                             <th>Actions</th>
                         </tr>
                         </thead>
