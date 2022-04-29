@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import {Button} from 'react-bootstrap'
 import TicketList from './ticket-list.component';
+import EndUserOpen from './enduser-open.component';
+import EndUserClosed from './enduser-closed.component';
 
 class Description extends Component{
 
@@ -46,8 +48,13 @@ class Description extends Component{
                     <div className="p-2 col-example text-left">
                         <h3 style={styles}>Want to View All Tickets ? <Button variant="primary" onClick={this._onButtonClick}>View Tickets</Button></h3>
                         {this.state.showTicketsComponent ?
-                        <TicketList /> :
+                        <EndUserOpen showSideBar={'1'}/> :
                         null
+                        }
+                        {
+                          this.state.showTicketsComponent ?
+                          <EndUserClosed showSideBar={'1'}/>:
+                          null
                         }
                     </div>
                 </div>

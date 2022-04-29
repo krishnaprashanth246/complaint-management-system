@@ -51,7 +51,8 @@ class EndUserClosed extends Component{
         return(
             // <div>
             <div className='wrapper'>
-                 <EndUserSidebar />
+                 {/* <EndUserSidebar /> */}
+                 {!this.props.showSideBar?<EndUserSidebar />:null}
             <div>
                 <br></br>
 				<h3>Closed Tickets</h3>

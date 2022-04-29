@@ -51,7 +51,7 @@ class EndUserOpen extends Component{
         return(
             // <div>
             <div className='wrapper'>
-                 <EndUserSidebar />
+                 {!this.props.showSideBar?<EndUserSidebar />:null}
             <div>
                 <br></br>
 				<h3>Open Tickets</h3>
@@ -64,7 +64,7 @@ class EndUserOpen extends Component{
                             <th>Opened Date</th>
                             <th>Last Updated</th>
                             <th>Status</th>
-                            <th>Feedback</th>
+                            {/* <th>Feedback</th> */}
                             <th>Actions</th>
                         </tr>
                         </thead>

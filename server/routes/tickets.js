@@ -21,7 +21,7 @@ router.route('/email/:email').get((req, res) => {
     // const endUsermail = req.params.email;
     const endUseremail = req.params.email;
     // User.find({email: endUsermail}).select('email').then(email => {
-        console.log(endUseremail);
+        // console.log(endUseremail);
         Ticket.find({
             endUser: endUseremail
          }) .then(tickets => res.json(tickets))
@@ -40,6 +40,7 @@ router.route('/create').post((req, res) => {
     const endUser = req.body.endUser;
     // const assignedTechnician = req.body.assignedTechnician;
     const openedDate = req.body.openedDate;
+    console.log(openedDate);
     const lastUpdated = openedDate;
     const ticketStatus = "Open";
     const ticketInfo = req.body.ticketInfo;
