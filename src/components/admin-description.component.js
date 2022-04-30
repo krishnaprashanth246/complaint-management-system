@@ -40,9 +40,10 @@ class AdminDescription extends Component{
       }
     
         return(
-            <div style={styles}>
+            <div style={styles} className = "home_deco">
                 {/* <h2 >Welcome Admin</h2> */}
                 <h2 >Welcome {JSON.parse(localStorage.getItem('loginData')).profileObj.name}!</h2>
+                <div className = "home_div">
                 <p >The purpose of this platform is to provide support to the end users who are facing any IT related issues on IITH campus. End users can raise a ticket for their complaint and a technician will be assigned to solve the problem.
                 </p>
 
@@ -59,6 +60,7 @@ class AdminDescription extends Component{
                     </div> */}
                     <h3 className="p-2 col-example text-left">Want to View Transferred Tickets ? <Link to="/admin/tickets/transfer"><Button variant="primary">See Transferred Tickets</Button></Link></h3>
 
+                </div>
                 </div>
 
             </div>

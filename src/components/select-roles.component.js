@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../styles.css'
 
 
 export default class SelectRoles extends Component {
@@ -39,7 +40,7 @@ export default class SelectRoles extends Component {
                 </Col>
             </Row>
             */
-           <div>
+           <div className = "main_home_div">
            <Container>
                <h1><center>Select a Role</center></h1>
            </Container>

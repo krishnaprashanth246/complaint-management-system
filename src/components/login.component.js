@@ -3,6 +3,9 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import axios from 'axios';
+import '../styles.css'
+
+
 //import { useNavigate } from "react-router-dom";
 
 const clientID = '610437251477-3qnl60hikuaeq0blbmc2fh95i0k9ld38.apps.googleusercontent.com';
@@ -77,7 +80,9 @@ const Login = ({history}) => {
     //const navigate = useNavigate;
     return (
         // <h2><center>Sign In With Google</center></h2>
-        <div>
+        <div className = "login_div">
+            <p > Login using google </p>
+
             <div>
                 {showloginButton ?
                     <GoogleLogin
@@ -99,6 +104,7 @@ const Login = ({history}) => {
                 }
             </div>
         </div>
+
     );
 }
 
