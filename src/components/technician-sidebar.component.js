@@ -40,12 +40,12 @@ const TechnicianSidebar = ({history}) => {
                 			closed Tickets
                 		</NavLink>
             		</li>
-            		<li>
+            		{/* <li>
                 		<NavLink to="/technician/tickets/transfer" className="nav-link" activeClassName="active">
                 			<i class="fas fa-ticket-alt"></i>
                 			Transfer Requests
                 		</NavLink>
-            		</li>
+            		</li> */}
                     <li>
                 		<NavLink to="/technician/faq" className="nav-link" activeClassName="active">
                 			<i class="fas fa-question"></i>

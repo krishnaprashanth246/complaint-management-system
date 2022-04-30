@@ -86,7 +86,7 @@ const AdminSidebar = ({ history }) => {
 				</li>
 				<li>
 					<NavLink to="/admin/roleassign" className="nav-link" activeClassName="active">
-						<i class="fas fa-question"></i>
+						<i class="fas fa-users"></i>
 						{/* <i class="fa-solid fa-question"></i> */}
 						Assign Roles
 					</NavLink>
