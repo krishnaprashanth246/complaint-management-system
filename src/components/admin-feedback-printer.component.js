@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export default class EndUserTicketPrinter extends Component{
+export default class AdminFeedbackPrinter extends Component{
     constructor(props) {
         super(props);
     }
@@ -15,19 +15,19 @@ export default class EndUserTicketPrinter extends Component{
     render() {
         return (
             <tr>
-                <td>{this.props.ticket.ticketInfo.slice(0,10)}...</td>
-                <td>{this.props.ticket.categoryName}</td>
-                <td>{this.props.ticket.assignedTechnician?this.props.ticket.assignedTechnician.split('@')[0]:null}</td>
-                <td>{this.props.ticket.openedDate ? this.props.ticket.openedDate.split('T')[0] : 'N/A'}</td>
-                <td>{this.props.ticket.lastUpdated? this.props.ticket.lastUpdated.split('T')[0] : 'N/A'}</td>
+                <td>{this.props.ticket.ticketId}</td>
+                <td>{this.props.ticket.rating}</td>
+                <td>{this.props.ticket.feedback}</td>
+                <td>{ this.props.ticket.assignedTechnician ? this.props.ticket.assignedTechnician.split('@')[0] : null}</td>
+               
+                {/*} <td>{this.props.ticket.openedDate}</td>
+                <td>{this.props.ticket.lastUpdated}</td>
                 <td>{this.props.ticket.ticketStatus}</td>
                 {/* { getPriorities(this.props.ticket.priority) } */}
-                {this.props.arg == "closed"?(<td>{this.props.ticket.feedback?"Submitted" : <Link to={"/enduser/feedback/"+this.props.ticket._id + "/"+ this.props.ticket.assignedTechnician}>Submit feedback</Link> }</td>):null }
-                <td><Link to={`/enduser/tickets/${this.props.ticket._id}`} >View Ticket</Link></td>
-                {/* <td><Link to= {{
-                    pathname: `/enduser/tickets/id`,
-                    state: {param: this.props.ticket._id}                
-                }}>View Ticket</Link></td> */}
+                {/* <td>{!this.props.ticket.feedback ?'Not Submitted':'Submitted'}</td>
+                {/* <td></td> */}
+                {/* <td><Link to={`/admin/tickets/${this.props.ticket._id}`} >View Ticket</Link></td> */} 
+
                 {/* <td>
                     <Link to={"/edit/"+this.props.ticket._id} className="badge badge-info">Edit</Link>
                     <br></br>

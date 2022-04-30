@@ -50,6 +50,8 @@ import AdminSingleTicket from './components/admin-single-ticket.component';
 import AdminEditTicket from "./components/admin-edit-ticket.component";
 import AdminRoleAssign from './components/admin-roleassign.component';
 import AdminRoleAssignEdit from './components/admin-edit-roleassign.component';
+import CreateFeedback from './components/enduser-feedback.component';
+import AdminOpenFeedback from './components/admin-feedback.component';
 
 export default function App() {
   const [loginData, setLoginData] = useState(
@@ -106,6 +108,8 @@ export default function App() {
                   <Route path="/admin/tickets/edit/:id" exact component={AdminEditTicket} />
                   <Route path="/admin/roleassign" exact component={AdminRoleAssign} />
                   <Route path="/admin/roleassign/edit/:id" exact component={AdminRoleAssignEdit} />
+                  <Route path="/enduser/feedback/:id/:assignedTechnician" exact component={CreateFeedback} />
+                  <Route path="/admin/feedback/" exact component={AdminOpenFeedback} />
 
                   <Route component={TryAgain} /> 
                 </Switch>

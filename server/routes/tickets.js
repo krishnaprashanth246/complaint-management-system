@@ -182,6 +182,30 @@ router.route('/enduser/update/:id').post((req,res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/enduser/update/feedback/:id').post((req,res) => {
+    console.log("Heyyeyeyey");
+    Ticket.findById(req.params.id)
+        .then(ticket => {
+            
+            // ticket.categoryId = req.body.categoryId;
+            // ticket.categoryName = req.body.categoryName;
+            // ticket.endUser = req.body.endUser;
+            // const assignedTechnician = req.body.assignedTechnician;
+            // ticket.openedDate = req.body.openedDate;
+            ticket.lastUpdated = new Date();
+            ticket.feedback = "Submitted"
+            // ticket.ticketStatus = req.body.ticketStatus;
+            // ticket.ticketInfo = req.body.ticketInfo;
+            // We get tassigned technician through other modules
+            // ticket.assignedTechnician = null;
+
+            ticket.save()
+                .then(() => res.json('Ticket updated'))
+                .catch(err => res.status(400).json('Error: ' + err));
+    	})
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 
 router.route('/technician/update/:id').post((req,res) => {
     Ticket.findById(req.params.id)

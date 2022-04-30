@@ -5,12 +5,13 @@ const Feedback = require('../models/feedback.model');
 
 // CREATE
 router.route('/create').post((req, res) => {
-    const ticketId = req.body.ticketId;
+    const ticketId = req.body.ticketID;
     const feedback = req.body.feedback;
     const rating = req.body.rating;
+    const assignedTechnician = req.body.assignedTechnician;
 
     const newFeedback = new Feedback({
-    	ticketId, feedback, rating
+    	ticketId, feedback, rating, assignedTechnician
     });
 
     newFeedback.save()
