@@ -48,15 +48,15 @@ const AdminSidebar = ({ history }) => {
 				<li>
 					<NavLink to="/admin/tickets/transfer" className="nav-link" activeClassName="active">
 						<i class="fas fa-ticket-alt"></i>
-						Transfer Requests
+						Transfer Tickets
 					</NavLink>
 				</li>
-				<li>
+				{/* <li>
 					<NavLink to="/admin/#" className="nav-link" activeClassName="active">
 						<i class="fas fa-ticket-alt"></i>
 						Manual Assignment Requests
 					</NavLink>
-				</li>
+				</li> */}
 				<li>
 					<NavLink to="/admin/feedback" className="nav-link" activeClassName="active">
 						<i class="fas fa-ticket-alt"></i>
