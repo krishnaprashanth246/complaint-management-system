@@ -85,6 +85,13 @@ const AdminSidebar = ({ history }) => {
 					</NavLink>
 				</li>
 				<li>
+					<NavLink to="/admin/roleassign" className="nav-link" activeClassName="active">
+						<i class="fas fa-question"></i>
+						{/* <i class="fa-solid fa-question"></i> */}
+						Assign Roles
+					</NavLink>
+				</li>
+				<li>
 					<NavLink to="/admin/logout" className="nav-link" activeClassName="active" onClick={e => handleLogout(e)}>
 
 						<GoogleLogout

@@ -38,6 +38,13 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//Get all technicians
+router.route('/technicians').get((req, res) => {
+    User.find({technicianRole: true})
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 // Get by email
 router.route('/email/:email').get((req, res) => {
     User.findOne({email: req.params.email})
@@ -45,6 +52,12 @@ router.route('/email/:email').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+// Get by id
+router.route('/:id').get((req, res) => {
+    User.findById(req.params.id)
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 // DELETE
 router.route('/:id').delete((req,res) => {
 User.findByIdAndDelete(req.params.id)
@@ -57,9 +70,9 @@ router.route('/:id').post((req,res) => {
     User.findById(req.params.id)
     .then(user => {
 
-        user.enduserRole = req.body.enduserRole;
-        user.technicianRole = req.body.technicianRole;
-        user.adminRole = req.body.adminRole;
+        user.enduserRole = req.body.enduserRole || true;
+        user.technicianRole = req.body.technicianRole || false;
+        user.adminRole = req.body.adminRole || false;
 
         user.save()
             .then(() => res.json(`User ${req.params.id} role has been updated`))
