@@ -5,14 +5,16 @@ import AdminSidebar from './admin-sidebar.component';
 import AdminTicketPrinter from './admin-ticket-printer.component';
 import axios from 'axios';
 
-class AdminTransferRequests extends Component{
+class AdminRoleAssign extends Component{
+    
     constructor(props) {
 		super(props);
 
-		this.state = { tickets: [] };
+		this.state = { users: [] };
 	}
+
     componentDidMount() {
-        axios.get(`http://localhost:5000/tickets/`
+        axios.get(`http://localhost:5000/users`
             // , 
             // {
             // params: {
@@ -20,21 +22,34 @@ class AdminTransferRequests extends Component{
             // }}
             )
             .then(res => {
-                this.setState({ tickets: res.data })
+                this.setState({ users: res.data })
             })
             .catch(error => console.log(error));
     }
-    getTransferList() {
-        return this.state.tickets.map(currentTicket => {
-            // console.log(currentTicket)
-            if(currentTicket.ticketStatus == "Open" && !currentTicket.assignedTechnician) {
-                return <AdminTicketPrinter 
-            			ticket={currentTicket} 
-                        key={currentTicket._id}
-                        />;
-            }
+
+
+    getAllList() {
+        return this.state.users.map(user => {
+            return (
+                <tr>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.technicianRole? 'True': 'False'}</td>
+                    <td>
+                        {user.adminRole? 'True': 'False'}
+                    </td>
+                    <td>
+                        <Link 
+                            to={`/admin/roleassign/edit/${user._id}`}
+                        >
+                            Edit
+                            </Link>
+                    </td>
+                </tr>
+            );
         })
 	}
+    
     render()
     {
         if(localStorage.getItem("loginData") == null){
@@ -47,31 +62,29 @@ class AdminTransferRequests extends Component{
         return(
             <div className='wrapper'>
                  <AdminSidebar />
-                <div>
-                    <h3>All Transfer Requests</h3>
+            <div>
+                <br></br>
+				<h3>All Users</h3>
                     <table className="table">
                         <thead className="thead-light">
                         <tr>
-                            <th>Ticket Info</th>
-                            <th>Category Name</th>
-                            <th>Enduser ID</th>
-                            <th>Assigned Technician</th>
-                            <th>Opened Date</th>
-                            <th>Last Updated</th>
-                            <th>Status</th>
-                            <th>Feedback</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Is Technician</th>
+                            <th>Is Admin</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                            { this.getTransferList() }
+                            { this.getAllList() }
                         </tbody>
                     </table>
-                </div>
+			</div>
+
             </div>
         );      
     };
 
 }
 
-export default AdminTransferRequests;
+export default AdminRoleAssign;

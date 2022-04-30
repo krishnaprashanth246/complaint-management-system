@@ -48,7 +48,8 @@ import TechnicianSingleTicket from './components/technician-single-ticket.compon
 import TechnicianEditTicket from "./components/technician-edit-ticket.component";
 import AdminSingleTicket from './components/admin-single-ticket.component';
 import AdminEditTicket from "./components/admin-edit-ticket.component";
-
+import AdminRoleAssign from './components/admin-roleassign.component';
+import AdminRoleAssignEdit from './components/admin-edit-roleassign.component';
 
 export default function App() {
   const [loginData, setLoginData] = useState(
@@ -103,6 +104,8 @@ export default function App() {
                   <Route path="/technician/tickets/edit/:id" exact component={TechnicianEditTicket} />
                   <Route path="/admin/tickets/:id" exact component={AdminSingleTicket} />
                   <Route path="/admin/tickets/edit/:id" exact component={AdminEditTicket} />
+                  <Route path="/admin/roleassign" exact component={AdminRoleAssign} />
+                  <Route path="/admin/roleassign/edit/:id" exact component={AdminRoleAssignEdit} />
 
                   <Route component={TryAgain} /> 
                 </Switch>

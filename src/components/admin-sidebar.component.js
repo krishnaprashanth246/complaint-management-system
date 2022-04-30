@@ -48,15 +48,15 @@ const AdminSidebar = ({ history }) => {
 				<li>
 					<NavLink to="/admin/tickets/transfer" className="nav-link" activeClassName="active">
 						<i class="fas fa-ticket-alt"></i>
-						Transfer Requests
+						Transfer Tickets
 					</NavLink>
 				</li>
-				<li>
+				{/* <li>
 					<NavLink to="/admin/#" className="nav-link" activeClassName="active">
 						<i class="fas fa-ticket-alt"></i>
 						Manual Assignment Requests
 					</NavLink>
-				</li>
+				</li> */}
 				<li>
 					<NavLink to="/admin/feedback" className="nav-link" activeClassName="active">
 						<i class="fas fa-ticket-alt"></i>
@@ -82,6 +82,13 @@ const AdminSidebar = ({ history }) => {
 						<i class="fas fa-question"></i>
 						{/* <i class="fa-solid fa-question"></i> */}
 						Create Category
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to="/admin/roleassign" className="nav-link" activeClassName="active">
+						<i class="fas fa-question"></i>
+						{/* <i class="fa-solid fa-question"></i> */}
+						Assign Roles
 					</NavLink>
 				</li>
 				<li>

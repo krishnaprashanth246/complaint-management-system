@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
@@ -12,6 +13,7 @@ class AdminEditTicket extends Component{
         this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
         this.onChangeTicketInfo = this.onChangeTicketInfo.bind(this);
         this.onChangeTicketStatus = this.onChangeTicketStatus.bind(this);
+        this.onChangeAssignedTechnician = this.onChangeAssignedTechnician.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
@@ -22,7 +24,8 @@ class AdminEditTicket extends Component{
             categories: [],
             categoriesId: [],
             assignedTechnician: '',
-            ticketStatusList : ["Open", "Closed"]
+            ticketStatusList : ["Open", "Closed"],
+            technicians: [],
           };
 
 
@@ -55,7 +58,13 @@ class AdminEditTicket extends Component{
                 })
             })
             .catch((error) => { console.log(error); })
-
+        axios.get('http://localhost:5000/users/technicians')
+            .then(res => {
+                this.setState({
+                    technicians: res.data.map(technician => [technician._id, technician.name, technician.email]),
+                })
+            })
+            .catch((error) => { console.log(error); })
 
     }
 
@@ -74,6 +83,11 @@ class AdminEditTicket extends Component{
         })
     }
 
+    onChangeAssignedTechnician(e){
+        this.setState({
+            assignedTechnician: e.target.value
+        })
+    }
 
       onChangeTicketInfo(e) {
         this.setState({
@@ -104,7 +118,7 @@ class AdminEditTicket extends Component{
                 //   categoryId: '',
                 categoryName: '',
                 endUser: '',
-                //   assignedTechnician: '',
+                assignedTechnician: '',
                 //   openedDate: '',
                 //   lastUpdated:'',
                 //   ticketStatus: '',
@@ -126,6 +140,12 @@ class AdminEditTicket extends Component{
 
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "admin"){
+            return (<Redirect to="/selectrole"/>)
+        }
         return(
             <div className='wrapper'>
                 <AdminSidebar />
@@ -159,7 +179,24 @@ class AdminEditTicket extends Component{
                         }
                     </select>
                     </div>
-                    
+                    <div className="form-group">
+                    <label>Assigned Technician: </label>
+                    <select className="form-control"
+                        value={this.state.assignedTechnician}
+                        onChange={this.onChangeAssignedTechnician}>
+                        <option key={''}
+                            value={''}>N/A
+                            </option>
+                        {
+                        this.state.technicians.map((technician) => {
+                            return <option key={technician[2]}
+                            value={technician[2]}
+                            >{technician[1]}
+                            </option>;
+                        })
+                        }
+                    </select>
+                    </div>
                     <div className="form-group">
                     <label>Ticket Status: </label>
                     <select className="form-control"

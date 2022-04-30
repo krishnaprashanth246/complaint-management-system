@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import TechnicianSidebar from './technician-sidebar.component';
@@ -123,6 +123,13 @@ class TechnicianEditTicket extends Component{
 
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "technician"){
+            return (<Redirect to="/selectrole"/>)
+        }
+        
         return(
             <div className='wrapper'>
                 <TechnicianSidebar />
