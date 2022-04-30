@@ -27,6 +27,8 @@ class AdminRoleAssignEdit extends Component{
         axios.get('http://localhost:5000/users/'+this.props.match.params.id)
             .then(res => {
                 this.setState({
+                    name: res.data.name,
+                    email: res.data.email,
                     enduserRole: res.data.enduserRole,
                     technicianRole: res.data.technicianRole,
                     adminRole: res.data.adminRole,
@@ -80,11 +82,11 @@ class AdminRoleAssignEdit extends Component{
             <div className='wrapper'>
                 <AdminSidebar />
             <div>
-                <h3>Edit Ticket</h3>
+                <h3>Assign Role</h3>
                 {/* {this.props.location.state.param} */}
                 <br></br>
                 <div >
-
+                    <h4>{this.state.name}</h4>
                 </div>
                 <form onSubmit={this.onSubmit}>
                     {/* <div className="form-group">
