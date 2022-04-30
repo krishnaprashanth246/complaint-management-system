@@ -66,8 +66,8 @@ class CreateFaq extends Component {
         return (
         <div className='wrapper'>
             <AdminSidebar/>
-            <div>
-                <h3>Create a FAQ</h3>
+            <div className = "middle_align_modf" >
+                <h3 className = "middle_align_modfp" >Create a FAQ</h3>
                 <form onSubmit={this.onSubmit}>
             
                     <div className="form-group">
@@ -92,7 +92,7 @@ class CreateFaq extends Component {
                         onChange={this.onChangeAnswer}
                         ></textarea>
 					</div>
-                    <div className="form-group">
+                    <div className="form-group middle_align_modfp">
                         <input type="submit"
                                value="Create FAQ"
                                className="btn btn-primary"

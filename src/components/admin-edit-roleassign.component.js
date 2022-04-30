@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import AdminSidebar from './admin-sidebar.component';
@@ -27,6 +27,8 @@ class AdminRoleAssignEdit extends Component{
         axios.get('http://localhost:5000/users/'+this.props.match.params.id)
             .then(res => {
                 this.setState({
+                    name: res.data.name,
+                    email: res.data.email,
                     enduserRole: res.data.enduserRole,
                     technicianRole: res.data.technicianRole,
                     adminRole: res.data.adminRole,
@@ -70,15 +72,21 @@ class AdminRoleAssignEdit extends Component{
 
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "admin"){
+            return (<Redirect to="/selectrole"/>)
+        }
         return(
             <div className='wrapper'>
                 <AdminSidebar />
             <div>
-                <h3>Edit Ticket</h3>
+                <h3>Assign Role</h3>
                 {/* {this.props.location.state.param} */}
                 <br></br>
                 <div >
-
+                    <h4>{this.state.name}</h4>
                 </div>
                 <form onSubmit={this.onSubmit}>
                     {/* <div className="form-group">
@@ -122,7 +130,7 @@ class AdminRoleAssignEdit extends Component{
 
                     <div className="form-group">
                     <input type="submit"
-                        value="Submit Ticket"
+                        value="Submit"
                         className="btn btn-primary"
                     />
                     </div>

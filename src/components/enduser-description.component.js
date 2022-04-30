@@ -38,13 +38,16 @@ class Description extends Component{
         return (<Redirect to="/selectrole"/>)
       }
         return(
-            <div style={styles}>
+            <div style={styles} className = "home_deco">
                 <h2 >Welcome {JSON.parse(localStorage.getItem('loginData')).profileObj.name}!</h2>
+
+                <div className = "home_div">
                 <p >The purpose of this platform is to provide support to the end users who are facing any IT related issues on IITH campus. End users can raise a ticket for their complaint and a technician will be assigned to solve the problem.
                 </p>
 
+                
                 <div className="d-flex flex-column rolealign">
-                    <h3 className="p-2 col-example text-left">Have Complaints ? <Link to="/enduser/tickets/create"><Button variant="primary">Open New Ticket</Button></Link></h3>
+                    <h3 className="p-2 col-example text-left"> Have Complaints ? <Link to="/enduser/tickets/create"> <Button variant="primary">Open New Ticket</Button></Link></h3>
                     <div className="p-2 col-example text-left">
                         <h3 style={styles}>Want to View All Tickets ? <Button variant="primary" onClick={this._onButtonClick}>View Tickets</Button></h3>
                         {this.state.showTicketsComponent ?
@@ -57,6 +60,7 @@ class Description extends Component{
                           null
                         }
                     </div>
+                </div>
                 </div>
 
             </div>

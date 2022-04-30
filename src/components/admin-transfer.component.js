@@ -26,11 +26,13 @@ class AdminTransferRequests extends Component{
     }
     getTransferList() {
         return this.state.tickets.map(currentTicket => {
-            if(currentTicket.ticketStatus === "Open" && currentTicket.assignedTechnician === null) 
+            // console.log(currentTicket)
+            if(currentTicket.ticketStatus == "Open" && !currentTicket.assignedTechnician) {
                 return <AdminTicketPrinter 
             			ticket={currentTicket} 
                         key={currentTicket._id}
                         />;
+            }
         })
 	}
     render()

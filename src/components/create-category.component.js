@@ -3,6 +3,7 @@ import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import AdminSidebar from './admin-sidebar.component';
 // import Category from '../../server/models/category.model';
+import '../styles.css'
 
  class CreateCategory extends Component {
 
@@ -58,23 +59,27 @@ import AdminSidebar from './admin-sidebar.component';
         return (
         <div className='wrapper'>
             <AdminSidebar/>
-            <div>
+            <div className = "middle_align">
                 <h3>Create New Category</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Category: </label>
+                        {/* <label> Category: </label> */}
                         <input type="text"
                                className="form-control"
                                value={this.state.categoryName}
                                onChange={this.onChangeName}
                         />
                     </div>
+
+                    <div className = "spaces"> </div>
+
                     <div className="form-group">
                         <input type="submit"
                                value="Create Category"
                                className="btn btn-primary"
                         />
                     </div>
+                    
                 </form>
             </div>
         </div>

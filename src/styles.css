@@ -92,3 +92,114 @@ td {
   text-align: center;  
   padding-bottom : 50px;
 }
+
+.google_auth{
+  position : absolute;
+  top : 45%;
+  left : 45%;
+  font-size: 50px;
+}
+
+.auth_login {
+  text-align: center;
+  vertical-align: middle;
+  position : absolute;
+  top : 38%;
+  left : 40%;
+  color :rgb(127, 27, 227);
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+
+}
+
+.home_deco h2{
+
+  color :rgb(227, 27, 74);
+  margin-top : 50px;
+}
+
+.home_deco p{
+  margin-top : 20px;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+.home_div{
+  border : 3px solid blue;
+  border-radius : 10px;
+  padding : 10px;
+  margin : 100px 200px 0px 220px;
+  background-color: rgb(230, 251, 248);
+  /* box-shadow: 5px 5px 5px 5px #e9e8e8; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.main_home_div{
+  border : 3px solid blue;
+  border-radius : 10px;
+  padding : 20px;
+  margin : 120px 500px 0px 500px;
+  background-color: rgb(230, 251, 248);
+  /* box-shadow: 5px 5px 5px 5px #e9e8e8; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.main_home_div h1{
+
+  padding-bottom : 15px;
+  font-family: Arial;
+}
+
+.login_div{
+  border : 3px solid blue;
+  border-radius : 10px;
+  padding : 50px;
+  margin : 150px 500px 0px 500px;
+  background-color: rgb(230, 251, 248);
+  /* box-shadow: 5px 5px 5px 5px #e9e8e8; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  
+}
+
+.login_div p{
+
+  padding-bottom : 20px;
+}
+
+.middle_align{
+  text-align : center;
+  margin : auto;
+  width : 40%;
+}
+
+.middle_align h3{
+  padding : 20px;
+}
+
+.spaces{
+  padding-top : 20px;
+}
+
+.middle_align_modf{
+  margin : auto;
+  width : 40%;
+}
+
+.middle_align_modfp{
+  text-align: center;
+  padding : 20px;
+}
+
+.heading{
+  text-align : center;
+  font-size : 60px;
+  color: crimson;
+  margin-top : 100px;
+}
+
+
