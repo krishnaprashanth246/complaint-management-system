@@ -4,6 +4,7 @@ import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import EndUserSidebar from './enduser-sidebar.component';
 import EnduserEditTicketComponent from './enduser-edit-ticket.component';
+import { Link, Redirect } from 'react-router-dom';
 
 class EndUserSingleTicket extends Component{
     constructor(props)
@@ -65,6 +66,12 @@ class EndUserSingleTicket extends Component{
 
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "enduser"){
+            return (<Redirect to="/selectrole"/>)
+        }
         return(
             <div className='wrapper'>
                 <EndUserSidebar />

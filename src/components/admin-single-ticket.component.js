@@ -4,6 +4,7 @@ import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import AdminSidebar from './admin-sidebar.component';
 import AdminEditTicketComponent from './admin-edit-ticket.component';
+import { Link, Redirect } from 'react-router-dom';
 
 class AdminSingleTicket extends Component{
     constructor(props)
@@ -66,6 +67,12 @@ class AdminSingleTicket extends Component{
 
     render()
     {
+        if(localStorage.getItem("loginData") == null){
+            return (<Redirect to="/selectrole"/>)
+        }
+        if(localStorage.getItem("role") != "admin"){
+            return (<Redirect to="/selectrole"/>)
+        }
         return(
             <div className='wrapper'>
                 <AdminSidebar />
