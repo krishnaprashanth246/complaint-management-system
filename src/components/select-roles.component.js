@@ -40,14 +40,18 @@ export default class SelectRoles extends Component {
                 </Col>
             </Row>
             */
-           <div className = "main_home_div">
-           <Container>
+          
+            <div>
+                <h1 className = "heading"> Complaint Managment System</h1>
+            <div className = "main_home_div">
+            <Container>
                <h1><center>Select a Role</center></h1>
-           </Container>
+            </Container>
             <div className="d-flex flex-column rolealign">
                 <div className="p-2 col-example text-left"><Link to='/login'><Button variant="primary" size="lg" value={'enduser'} onClick={e => this.handleInput(e, "value") }> End User</Button></Link></div>
                 <div className="p-2 col-example text-left"><Link to='/login'><Button variant="primary" size="lg" value={'technician'} onClick={e => this.handleInput(e, "value") }>Technician</Button></Link></div>
                 <div className="p-2 col-example text-left"><Link to='/login'><Button variant="primary" size="lg" value={'admin'} onClick={e => this.handleInput(e, "value") }>Admin</Button></Link></div>
+            </div>
             </div>
             </div>
         );

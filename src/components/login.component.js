@@ -80,6 +80,8 @@ const Login = ({history}) => {
     //const navigate = useNavigate;
     return (
         // <h2><center>Sign In With Google</center></h2>
+        <div>
+        <h1 className = "heading"> Complaint Managment System</h1>
         <div className = "login_div">
             <p > Login using google </p>
 
@@ -104,7 +106,7 @@ const Login = ({history}) => {
                 }
             </div>
         </div>
-
+        </div>
     );
 }
 

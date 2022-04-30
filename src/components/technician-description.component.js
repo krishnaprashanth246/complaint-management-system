@@ -47,14 +47,14 @@ class TechnicianDescription extends Component{
 
                 <div className="d-flex flex-column rolealign">
                     <h3 className="p-2 col-example text-left">Want to View Open Tickets ? <Link to="/technician/tickets/open"><Button variant="primary">See Open Tickets</Button></Link></h3>
-                    <h3 className="p-2 col-example text-left">Want to View Past Tickets ? <Link to="/technician/tickets/closed"><Button variant="primary">See Past Tickets</Button></Link></h3>
-                    <div className="p-2 col-example text-left">
+                    <h3 className="p-2 col-example text-left">Want to View Closed Tickets ? <Link to="/technician/tickets/closed"><Button variant="primary">See Closed Tickets</Button></Link></h3>
+                    {/* <div className="p-2 col-example text-left">
                         <h3 style={styles}>Want to View Transferred Tickets ? <Button variant="primary" onClick={this._onButtonClick}>See Transferred Tickets</Button></h3>
                         {this.state.showTransferredTicketsComponent ?
                         <TransferredTicketList /> :
                         null
                         }
-                    </div>
+                    </div> */}
                 </div>
                 </div>
 

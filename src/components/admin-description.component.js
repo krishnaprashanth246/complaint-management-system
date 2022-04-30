@@ -58,7 +58,7 @@ class AdminDescription extends Component{
                         null
                         }
                     </div> */}
-                    <h3 className="p-2 col-example text-left">Want to View Transferred Tickets ? <Link to="/admin/tickets/transfer"><Button variant="primary">See Transferred Tickets</Button></Link></h3>
+                    <h3 className="p-2 col-example text-left">Want to View Transfer Tickets ? <Link to="/admin/tickets/transfer"><Button variant="primary">See Transfer Tickets</Button></Link></h3>
 
                 </div>
                 </div>

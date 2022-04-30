@@ -130,7 +130,7 @@ class AdminRoleAssignEdit extends Component{
 
                     <div className="form-group">
                     <input type="submit"
-                        value="Submit Ticket"
+                        value="Submit"
                         className="btn btn-primary"
                     />
                     </div>
