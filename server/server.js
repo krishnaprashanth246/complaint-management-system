@@ -5,7 +5,7 @@ require('dotenv').config();
 const { OAuth2Client } = require('google-auth-library');
 const app = express();
 const port = process.env.PORT || 5000;
-const REACT_APP_GOOGLE_CLIENT_ID = '610437251477-3qnl60hikuaeq0blbmc2fh95i0k9ld38.apps.googleusercontent.com';
+const REACT_APP_GOOGLE_CLIENT_ID = '<Google CLient ID>';
 
 const client = new OAuth2Client(REACT_APP_GOOGLE_CLIENT_ID);
 
